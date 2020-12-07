@@ -8,9 +8,9 @@ installHelm() {
     
     title "Installing Helm v${versionHelm}"    
 
-    getarch='uname -m'
+#    getarch='uname -m'
 
-    case "$getarch" in
+    case "$(uname -m)" in
         aarch64) curl -fsSl "https://get.helm.sh/helm-v${versionHelm}-linux-arm64.tar.gz" -o helm.tar.gz
                 tar -zxvf helm.tar.gz
                 sudo mv linux-arm64/helm /usr/local/bin/helm
