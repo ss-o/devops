@@ -6,7 +6,7 @@ source "${SRCDIR}/utils.sh"
 installNode() {
     title "Installing Node ${versionNode}"
     curl -L "https://deb.nodesource.com/setup_${versionNode}.x" | sudo -E bash -
-    wget --no-cache -O - https://raw.githubusercontent.com/natancabral/ubuntu-bash-script-config/main/run/node-js-npm-yarn-reinstall.sh | bash
+    sudo apt install -y nodejs npm
 
     if [[ ${versionDeb} = "stretch" ]]; then
         sudo chown -R "$(whoami)" /usr/lib/node_modules
@@ -23,8 +23,8 @@ installNode() {
     fi
 
     if [[ ${versionDeb} = "bionic" ]]; then
-        sudo chown -R "$(whoami)" /usr/share/npm/node_modules
-        sudo chmod -R 777 /usr/share/npm/node_modules
+        sudo chown -R "$(whoami)" /usr/lib/node_modules
+        sudo chmod -R 777 /usr/lib/node_modules
     fi
 
     breakLine
