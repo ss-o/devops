@@ -5,8 +5,10 @@ source "${SRCDIR}/utils.sh"
 # Docker
 ##########################################################
 installDocker() {
+    title "Add repository"
+    repoDocker
     title "Installing Docker CE with Docker Compose"
-    sudo apt install -y docker-ce
+    sudo apt install -y curl docker-ce
     curlToFile "https://github.com/docker/compose/releases/download/${versionDockerCompose}/docker-compose-$(uname -s)-$(uname -m)" "/usr/local/bin/docker-compose"
     sudo chmod +x /usr/local/bin/docker-compose
 
@@ -16,6 +18,7 @@ installDocker() {
     notify "Install a separate runc environment? (recommended on chromebooks)"
 
     if _confirm; then
+
             if [[ ${installedGo} -ne 1 ]] && [[ "$(command -v go)" == '' ]]; then
                 breakLine
                 installGoLang
