@@ -8,7 +8,7 @@ installGoLang() {
     title "Installing GoLang ${versionGo}"
     getarch="uname -m"
     
-    case "$geterch" in
+    case "$getarch" in
         aarch64) curlToFile "https://dl.google.com/go/go${versionGo}.linux-arm64.tar.gz" "go.tar.gz"
                 tar xvf go.tar.gz ;; 
         x86_64)  curlToFile "https://dl.google.com/go/go${versionGo}.linux-amd64.tar.gz" "go.tar.gz"
