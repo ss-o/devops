@@ -5,17 +5,12 @@ source "${SRCDIR}/utils.sh"
 # Docker
 ##########################################################
 installDocker() {
-    getarch="uname -m"
     title "Add repository"
     repoDocker
     title "Installing Docker CE with Docker Compose"
     sudo apt install -y curl docker-ce
-    if [ "$getarch" == "aarch64" ] && [ "$getarch" == "armv7l" ]; then
-    sudo apt install -y docker-compose
-    else
-    curlToFile "https://github.com/docker/compose/releases/download/${versionDockerCompose}/docker-compose-$(uname -s)-$(uname -m)" "/usr/local/bin/docker-compose"
-    sudo chmod +x /usr/local/bin/docker-compose
-    fi
+    curlToFile "https://github.com/docker/compose/releases/download/${versionDockerCompose}/docker-compose-$(uname -s)-$(uname -m)" "/usr/local/bin/docker-compose" 
+    sudo chmod +x /usr/local/bin/docker-compose || sudo apt install -y docker-compose
     sudo groupadd docker
     sudo usermod -aG docker "${USER}"
     
