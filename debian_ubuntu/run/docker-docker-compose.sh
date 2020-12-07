@@ -10,7 +10,7 @@ installDocker() {
     repoDocker
     title "Installing Docker CE with Docker Compose"
     sudo apt install -y curl docker-ce
-    if [ "$getarch" == "aarch64" ] && [ "getarch" == "armv7l" ]; then
+    if [ "$getarch" == "aarch64" ] && [ "$getarch" == "armv7l" ]; then
     sudo apt install -y docker-compose
     else
     curlToFile "https://github.com/docker/compose/releases/download/${versionDockerCompose}/docker-compose-$(uname -s)-$(uname -m)" "/usr/local/bin/docker-compose"
@@ -43,11 +43,10 @@ installDocker() {
             sudo systemctl daemon-reload
             sudo systemctl restart containerd.service
             sudo systemctl restart docker
-            break
+            exit 
         else
-        break
+        exit
     fi
-
     breakLine
 }
 
