@@ -11,7 +11,7 @@ installGoLang() {
     elif
     curlToFile "https://dl.google.com/go/go${versionGo}.linux-amd64.tar.gz" "go.tar.gz"
     tar xvf go.tar.gz
-    else
+    elif
     sudo apt install -y golang
     fi
     if [[ -d /usr/local/go ]]; then
