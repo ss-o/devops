@@ -9,7 +9,7 @@ installDocker() {
     repoDocker
     title "Installing Docker CE with Docker Compose"
     sudo apt install -y curl docker-ce
-    curlToFile "https://github.com/docker/compose/releases/download/${versionDockerCompose}/docker-compose-$(uname -s)-$(uname -m)" "/usr/local/bin/docker-compose" 
+    curlToFile "https://github.com/docker/compose/releases/download/${versionDockerCompose}/docker-compose-$(uname -s)-$(uname -m)" "/usr/local/bin/docker-compose" || echo "Not found"
     sudo chmod +x /usr/local/bin/docker-compose || sudo apt install -y docker-compose
     sudo groupadd docker
     sudo usermod -aG docker "${USER}"
