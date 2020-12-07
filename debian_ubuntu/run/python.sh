@@ -1,4 +1,8 @@
 
+#!/usr/bin/env bash
+SRCDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SRCDIR}/utils.sh"
+
 # Python
 ##########################################################
 installPython() {
@@ -7,6 +11,6 @@ installPython() {
     sudo ln -s /usr/bin/pip3 /usr/bin/pip
     export PATH=/usr/local/bin/python:$PATH
 
-    installedPython=1
     breakLine
 }
+installPython
