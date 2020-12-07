@@ -6,7 +6,7 @@ source "${SRCDIR}/utils.sh"
 ##########################################################
 installGoLang() {
     title "Installing GoLang ${versionGo}"
-    curlToFile "https://dl.google.com/go/go${versionGo}.linux-${uname -m}.tar.gz" "go.tar.gz"
+    curlToFile "https://dl.google.com/go/go${versionGo}.linux-$(uname -m).tar.gz" "go.tar.gz"
     tar xvf go.tar.gz
 
     if [[ -d /usr/local/go ]]; then
