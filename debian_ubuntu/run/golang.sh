@@ -25,3 +25,4 @@ installGoLang() {
 
     breakLine
 }
+installGoLang
