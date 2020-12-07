@@ -9,12 +9,15 @@ installDocker() {
     repoDocker
     title "Installing Docker CE with Docker Compose"
     sudo apt install -y curl docker-ce
+    if [ $(uname -m) = 'aarch64' ] && [ $(uname -m) = 'armv7l' ]; then
+    sudo apt install -y docker-compose
+    else
     curlToFile "https://github.com/docker/compose/releases/download/${versionDockerCompose}/docker-compose-$(uname -s)-$(uname -m)" "/usr/local/bin/docker-compose"
     sudo chmod +x /usr/local/bin/docker-compose
-
+    fi
     sudo groupadd docker
     sudo usermod -aG docker "${USER}"
-
+    
     notify "Install a separate runc environment? (recommended on chromebooks)"
 
     if _confirm; then
