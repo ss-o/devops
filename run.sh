@@ -26,6 +26,12 @@ install_curl-wget() {
     sudo apt-get install -y wget curl
 }
 
+install_golang() {
+    sudo add-apt-repository ppa:longsleep/golang-backports
+   sudo apt update
+sudo apt install golang-go
+}
+
 install_vscode() {
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
     sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
