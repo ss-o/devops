@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+SRCDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SRCDIR}/utils.sh"
+
 # Docker
 ##########################################################
 installDocker() {
@@ -24,6 +28,7 @@ installDocker() {
 
             sudo apt install libseccomp-dev -y
             go get -v github.com/opencontainers/runc
+            go get -v github.com/opencontainers/runc
 
             cd "${GOPATH}/src/github.com/opencontainers/runc" || exit
             make BUILDTAGS='seccomp apparmor'
@@ -43,3 +48,4 @@ installDocker() {
 
     breakLine
 }
+installDocker
