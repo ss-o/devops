@@ -37,6 +37,13 @@ install_composer() {
     php composer-setup.php --install-dir=/home/utku/.local/bin --filename=composer
 }
 
+install_git() {
+    apt-get install software-properties-common python-software-properties
+add-apt-repository ppa:git-core/ppa
+apt-get install
+apt-get install git -y
+}
+
 install_vscode() {
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
     sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
