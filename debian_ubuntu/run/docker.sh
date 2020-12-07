@@ -43,4 +43,6 @@ installDocker() {
 
     breakLine
 }
+
 installDocker
+
