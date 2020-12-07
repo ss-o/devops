@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+SRCDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SRCDIR}/utils.sh"
 
 # Ruby
 ##########################################################
@@ -8,3 +11,4 @@ installRuby() {
     sudo gem install dapp -v ${versionDapp}
     breakLine
 }
+installRuby
