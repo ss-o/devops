@@ -5,7 +5,7 @@
 ###############################################################
 versionPhp="7.4";
 versionGo="1.15.6";
-versionHelm="2.14.1";
+versionHelm="2.16.1";
 versionSops="3.1.1";
 versionDapp="0.27.14";
 versionNode="12";

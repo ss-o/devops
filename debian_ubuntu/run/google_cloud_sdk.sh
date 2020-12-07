@@ -5,6 +5,8 @@ source "${SRCDIR}/utils.sh"
 # Google Cloud SDK
 ##########################################################
 installGoogleSdk() {
+    title "Adding repository"
+    repoGoogleSdk
     title "Installing Google Cloud SDK";
     sudo apt install -y google-cloud-sdk;
     breakLine;
