@@ -32,6 +32,11 @@ install_golang() {
     sudo apt install golang-go
 }
 
+install_composer() {
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php composer-setup.php --install-dir=/home/utku/.local/bin --filename=composer
+}
+
 install_vscode() {
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
     sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
