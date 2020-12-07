@@ -15,10 +15,7 @@ installDocker() {
 
     notify "Install a separate runc environment? (recommended on chromebooks)"
 
-    while true; do
-        read -p -r "(y/n)" yn
-        case ${yn} in
-        [Yy]*)
+    if _confirm; then
             if [[ ${installedGo} -ne 1 ]] && [[ "$(command -v go)" == '' ]]; then
                 breakLine
                 installGoLang
@@ -40,11 +37,9 @@ installDocker() {
             sudo systemctl restart containerd.service
             sudo systemctl restart docker
             break
-            ;;
-        [Nn]*) break ;;
-        *) echo "Please answer yes or no." ;;
-        esac
-    done
+        else
+        break
+    fi
 
     breakLine
 }

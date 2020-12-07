@@ -20,6 +20,19 @@ versionDeb="$(lsb_release -c -s)"
 ###############################################################
 ## HELPERS
 ###############################################################
+
+_confirm() {
+  read -r -p "${1:-Continue?} [y/N]" response
+  case $response in
+  [yY][eE][sS] | [yY])
+    true
+    ;;
+  *)
+    false
+    ;;
+  esac
+}
+
 title() {
     printf "\033[1;42m"
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' ' '
