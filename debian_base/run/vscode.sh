@@ -27,3 +27,4 @@ install_vscode() {
     sudo apt install -y code
     sudo rm -f microsoft.gpg
 }
+install_vscode
