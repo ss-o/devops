@@ -2,6 +2,8 @@
 SRCDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SRCDIR}/utils.sh"
 
+title "Adding repository"
+repoVsCode
 title "Installing Visual Studio Code"
 install_vscode() {
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
