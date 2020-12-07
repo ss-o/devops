@@ -25,6 +25,7 @@ installHelm() {
                 sudo mv linux-arm/helm /usr/local/bin/helm
                 sudo rm -rf linux-arm && sudo rm helm.tar.gz
                 ;;
+        *)      echo "Not found"
     esac
     breakLine
 }
