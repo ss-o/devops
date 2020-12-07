@@ -34,7 +34,7 @@ installGoLang() {
 
     # shellcheck source=/dev/null
     source ~/.bashrc
-    [-d "$GOPATH" ] && rm -r "$GOPATH" && mkdir "${GOPATH}"
+    [ -d "$GOPATH" ] && rm -r "$GOPATH" && mkdir "${GOPATH}"
     
     sudo chown -R root:root "${GOPATH}"
 
