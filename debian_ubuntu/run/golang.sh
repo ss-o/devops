@@ -10,11 +10,11 @@ installGoLang() {
     case "$(uname -m)" in
         aarch64) curlToFile "https://dl.google.com/go/go${versionGo}.linux-arm64.tar.gz" "go.tar.gz"
                 tar xvf go.tar.gz
-                sudo mv go /usr/local
+                sudo mv -f go /usr/local
                 rm go.tar.gz -f ;; 
         x86_64)  curlToFile "https://dl.google.com/go/go${versionGo}.linux-amd64.tar.gz" "go.tar.gz"
                 tar xvf go.tar.gz
-                sudo mv go /usr/local
+                sudo mv -f go /usr/local
                 rm go.tar.gz -f ;;
         *)      sudo apt install -y golang ;;
     esac
