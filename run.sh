@@ -28,8 +28,8 @@ install_curl-wget() {
 
 install_golang() {
     sudo add-apt-repository ppa:longsleep/golang-backports
-   sudo apt update
-sudo apt install golang-go
+    sudo apt update
+    sudo apt install golang-go
 }
 
 install_vscode() {
