@@ -7,6 +7,9 @@ source "${SRCDIR}/utils.sh"
 installGoLang() {
     title "Installing GoLang ${versionGo}"
 
+    if [[ -d /usr/local/go ]]; then
+        sudo rm -rf /usr/local/go
+    fi
     case "$(uname -m)" in
         aarch64) curlToFile "https://dl.google.com/go/go${versionGo}.linux-arm64.tar.gz" "go.tar.gz"
                 tar xvf go.tar.gz
@@ -18,10 +21,6 @@ installGoLang() {
                 rm go.tar.gz -f ;;
         *)      sudo apt install -y golang ;;
     esac
-
-    if [[ -d /usr/local/go ]]; then
-        sudo rm -rf /usr/local/go
-    fi
 
     title "Adding /etc/bash_completion.d/go"
     sudo curl -o /etc/bash_completion.d/go "https://raw.githubusercontent.com/kura/go-bash-completion/master/etc/bash_completion.d/go"
