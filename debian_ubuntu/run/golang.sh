@@ -8,14 +8,15 @@ installGoLang() {
     title "Installing GoLang ${versionGo}"
     getarch="uname -m"
     
-    case geterch 
+    case $geterch 
+
         aarch64) curlToFile "https://dl.google.com/go/go${versionGo}.linux-arm64.tar.gz" "go.tar.gz"
                 tar xvf go.tar.gz ;; 
         x86_64)  curlToFile "https://dl.google.com/go/go${versionGo}.linux-amd64.tar.gz" "go.tar.gz"
                 tar xvf go.tar.gz ;;
         *)      sudo apt install -y golang ;;
     esac
-    
+
     if [[ -d /usr/local/go ]]; then
         sudo rm -rf /usr/local/go
     fi
