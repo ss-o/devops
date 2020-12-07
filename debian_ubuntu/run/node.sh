@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+SRCDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SRCDIR}/utils.sh"
 # Node
 ##########################################################
 installNode() {
@@ -14,16 +17,16 @@ installNode() {
         sudo chown -R "$(whoami)" /usr/share/npm/node_modules
         sudo chmod -R 777 /usr/share/npm/node_modules
     fi
-    if [[ ${versionDeb} = "bionic" ]]; then
+    if [[ ${versionDeb} = "focal" ]]; then
         sudo chown -R "$(whoami)" /usr/lib/node_modules
         sudo chmod -R 777 /usr/lib/node_modules
     fi
 
-    if [[ ${versionDeb} = "focal" ]]; then
+    if [[ ${versionDeb} = "bionic" ]]; then
         sudo chown -R "$(whoami)" /usr/share/npm/node_modules
         sudo chmod -R 777 /usr/share/npm/node_modules
     fi
 
-    installedNode=1
     breakLine
 }
+installNode
