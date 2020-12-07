@@ -6,9 +6,8 @@ source "${SRCDIR}/utils.sh"
 ##########################################################
 installGoLang() {
     title "Installing GoLang ${versionGo}"
-    getarch="uname -m"
-    
-    case "$getarch" in
+
+    case "$(uname -m)" in
         aarch64) curlToFile "https://dl.google.com/go/go${versionGo}.linux-arm64.tar.gz" "go.tar.gz"
                 tar xvf go.tar.gz ;; 
         x86_64)  curlToFile "https://dl.google.com/go/go${versionGo}.linux-amd64.tar.gz" "go.tar.gz"
