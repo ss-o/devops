@@ -9,18 +9,19 @@ installGoLang() {
 
     case "$(uname -m)" in
         aarch64) curlToFile "https://dl.google.com/go/go${versionGo}.linux-arm64.tar.gz" "go.tar.gz"
-                tar xvf go.tar.gz ;; 
+                tar xvf go.tar.gz
+                sudo mv go /usr/local
+                rm go.tar.gz -f ;; 
         x86_64)  curlToFile "https://dl.google.com/go/go${versionGo}.linux-amd64.tar.gz" "go.tar.gz"
-                tar xvf go.tar.gz ;;
+                tar xvf go.tar.gz
+                sudo mv go /usr/local
+                rm go.tar.gz -f ;;
         *)      sudo apt install -y golang ;;
     esac
 
     if [[ -d /usr/local/go ]]; then
         sudo rm -rf /usr/local/go
     fi
-
-    sudo mv go /usr/local
-    rm go.tar.gz -f
 
     title "Adding /etc/bash_completion.d/go"
     sudo curl -o /etc/bash_completion.d/go "https://raw.githubusercontent.com/kura/go-bash-completion/master/etc/bash_completion.d/go"
