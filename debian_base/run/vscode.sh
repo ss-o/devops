@@ -11,7 +11,7 @@ install_vscode() {
     case "$(uname -m)" in
     aarch64)
         sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-        sudo sh -c 'echo "deb [arch=arm64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+        sudo sh -c 'echo "deb [arch=aarch64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
         ;;
     x86_64)
         sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
