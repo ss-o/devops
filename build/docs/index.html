@@ -1,0 +1,205 @@
+--- 
+layout: page 
+site_url: https://code.headmelted.com 
+image_url: images/code.png 
+---
+
+<section class="callout">
+<div class="callout-content">
+<h1 id="platforms"><i class="fa fa-table"></i>&nbsp;Platforms</h1>
+<p>The primary focus of this site is to provide builds of the open-source edition of VS Code for less common platforms (those that might not otherwise receive them).  You can find details below of the architectures, operating systems and packaging formats these builds support.</p>
+<dl>
+  <dt><i class="fa fa-microchip"></i>&nbsp;Architectures</dt>
+  <dd>amd64, i386, armhf, arm64</dd>
+  <dt><i class="fa fa-archive"></i>&nbsp;Packages</dt>
+  <dd>DEB, RPM</dd>
+  <dt><i class="fa fa-cogs"></i>&nbsp;Operating Systems</dt>
+  <dd><a href="#linux-install-scripts">Linux</a>, <!--<a href="#android-install-scripts">Android*</a>, --><a href="#chromeos-install-scripts">Chrome OS*</a><br/><i>(* uses embedded Linux)</i></dd>
+</dl>
+</div>
+</section>
+
+<!--<section class="callout callout-testing">-->
+<!--<div class="callout-content">-->
+<!--<h1 id="testing"><i class="fa fa-check-square-o"></i>&nbsp;Testing</h1>-->
+<!--<p>For each and every release, the build system prepares a virtual system for the given architecture. The finished package is then installed and tested with the full suite of tests from Microsoft. Once this is done, a test report is prepared that can be downloaded for review.  Only packages that pass all tests will proceed to release.</p>-->
+<!--</div>-->
+<!--</section>-->
+
+<!--
+<section class="callout callout-android" style="display:none;">
+<div class="callout-content">
+<h1 id="android-install-scripts"><i class="fa fa-android"></i>&nbsp;Android</h1>
+<p><strong><i class="fa fa-warning"></i>&nbsp;Please be aware that running the application on Android will require a physical keyboard</strong> (<i>the target devices of these releases are Android tablets</i>).</p>
+<ol>
+  <li>Install a terminal emulator from the Play Store (example: Termux)</li>
+  <li>Install a X11 display server from the Play Store (example: XServer XSDL)</li>
+  <li>Once you've installed a terminal emulator, enter the following command into a new terminal:</li>
+</ol>
+</div>
+</section>
+-->
+
+<section class="callout callout-chromeos">
+<div class="callout-content">
+<h1 id="chromeos-install-scripts"><i class="fa fa-chrome"></i>&nbsp;Chrome OS</h1>
+<!-- <h2><strong><i class="fa fa-android"></i>&nbsp;Android method</strong></h2>
+<p>If your Chrome OS device supports Android, you now have the option of following <a href="#android-install-scripts">the Android instructions</a> (<i>which allows you to avoid entering Developer Mode or installing Crouton</i>).</p>
+-->
+  
+  <h2><strong><i class="fa fa-cube"></i>&nbsp;Native method</strong></h2>
+<p>If your Chromebook supports the Linux Apps feature, the best way to install the application is to download the corresponding deb package for your architecture from <a href="https://github.com/headmelted/codebuilds/releases">the Releases page</a>.</p>
+  
+  <h2><strong><i class="fa fa-cube"></i>&nbsp;Crouton method</strong></h2>
+<p>The instructions below require you to put your device into Developer Mode.  <strong>There are important security implications to doing this, so please consider the ramifications carefully before deciding to do so.  Please click <a href="http://www.chromium.org/chromium-os/chromiumos-design-docs/developer-mode">here</a> for more details.</strong></p>
+<ol>
+  <li>Put your Chromebook into <a href="https://www.chromium.org/chromium-os/poking-around-your-chrome-os-device">developer mode</a>.</li>
+  <li>Install the <a href="https://goo.gl/OVQOEt">crouton extension</a> from the Chrome Web Store.</li>
+  <li>Press Ctrl + Alt + T to enter the crosh shell.</li>
+  <li>Type shell and press return to enter the developer shell.</li>
+  <li>Enter the following command, then press return:</li>
+  <pre id="install-yum">. <( wget -O - https://code.headmelted.com/installers/chromebook.sh )</pre>
+  </li>
+</ol></div>
+</section>
+
+<section class="callout callout-linux">
+<div class="callout-content">
+<h1 id="linux-install-scripts"><i class="fa fa-linux"></i>&nbsp;Linux</h1>
+<i>(including Raspberry Pis, Odroids and other single-board computers)</i>
+
+<p>Packages are currently available in DEB and RPM format.</p>
+
+<p>You can use the scripts here to install the packages and add their repository to your system.</p>
+
+<p>Open a new terminal. If you need super-user rights (you probably do), then you can enter <strong>sudo -s</strong> and press return
+to enter a super-user session. Run the installer for your current distribution:</p>
+
+<h3 id="header-apt"><img src="images/debian-logo.png" width="18" height="18">&nbsp;APT instructions</h3>
+<i>(including Debian, Raspbian, Ubuntu and Linux Mint)</i>
+
+<pre id="install-apt">. <( wget -O - https://code.headmelted.com/installers/apt.sh )</pre>
+
+<h3 id="header-yum"><img src="images/rpm-logo.png" width="18" height="18">&nbsp;YUM instructions</h3>
+<i>(including Fedora, Pidora, Red Hat and SUSE)</i>
+
+<pre id="install-yum">. <( wget -O - https://code.headmelted.com/installers/yum.sh )</pre>
+
+<p>Press the return key.  Once the installer has completed, you should have a "Code - OSS" entry in your desktop program list.</p>
+
+<h3 id="linux-header-manual">Manual installation</h1>
+
+<p>If for any reason the script above will not work on your system, or you do not want to add the package source
+for updates, you can get the latest version of the package for your system below.</p>
+
+<h4 id="header-gpg"><img src="images/gpg-logo.png" width="18" height="18">&nbsp;Public GPG key</h3>
+
+<p>For either APT or YUM installation, you'll want the public GPG key to verify the package, which you can download <a href="https://packagecloud.io/headmelted/codebuilds/gpgkey">here</a>.</p>
+
+<h4 id="header-apt">APT and YUM packages</h3>
+
+<p>The latest packages are now available directly from <a href="https://packagecloud.io/headmelted/codebuilds">the PackageCloud releases page</a>.</p>
+
+</div>
+</section>
+
+<section class="callout callout-faq">
+<div class="callout-content">
+<h1 id="faq"><i class="fa fa-question-circle"></i>&nbsp;Frequently asked questions</h1>
+
+<dl>
+  
+<dt>What is this?</dt>
+<dd>These are automated builds of the open-source edition of Microsoft's Visual Studio Code.</dd>
+
+<dt>How does this work?</dt>
+<dd>The latest code is pulled on a rolling basis from Microsoft's <a href="https://github.com/Microsoft/vscode">official repository</a>. If there are updates, the code is built, packaged and deployed.</dd>
+
+<dt>Which devices are supported?</dt>
+<dd>Please refer to the <a href="#platforms">Platforms</a> section.</dd>
+
+<dt>Do these releases support extensions?</dt>
+<dd>The extensions you want <strong>should</strong> work.  Any dependencies that are not local to your architecture (e.g. x86 binary code on an ARM chromebook) will be emulated to ensure compatibility, but there is no guarantee of compatibility.</dd>
+<!--
+<dt>Can I really run Visual Studio Code on my phone?</dt>
+<dd>You may be able to run it, but it won't do much unless you have a physical keyboard. The Android instructions are really intended for convertible tablets and docked handsets.</dd>
+
+<dt>Do I need to "root" my Android device?</dt>
+<dd>Absolutely not, and there are good security reasons not to.</dd>
+
+<dt>Do I need to put my Chromebook into Developer Mode?</dt>
+<dd>Only if your Chromebook does not currently have Android support, although performance and usability will be better if going down the developer mode route (it uses Crouton rather than Android). There are good security reasons not to enable Developer Mode, so consider this trade-off carefully.</dd>
+-->
+<dt>Will Visual Studio Code run on my device?</dt>
+<dd>The best way to find out if your device is compatible is to go to the <a href="#instructions">Instructions</a> section and try it for yourself.</dd>
+<!--
+<dt>Which virtual systems are these releases tested on?</dt>
+<dd>
+  <dl>
+    <dt>32-bit ARM hard-float (armhf)</dt>
+    <dd>These packages are installed and tested on a virtualized Raspberry Pi 2 running Raspbian Jessie.</dd>
+    <dt>64-bit ARM hard-float (arm64)</dt>
+    <dd>These packages are tested on a modified Ubuntu 16.04 image to mimic an Odroid C2.</dd>
+  </dl>
+</dd>
+
+<dt>You emulate a whole Raspberry Pi?</dt>
+<dd>Absolutely, it's the only way to be sure that all of the dependencies are tested and supported for a given build. (Note that x86 emulation is also disabled for this, to make sure we aren't accidentally cheating).</dd>
+-->
+<dt>Are these releases provided by Microsoft?</dt>
+<dd><strong>No</strong>. These releases are an independent community effort. For clarity, this website (and the releases here) are <strong>not</strong> affiliated with Microsoft.</dd>
+
+<dt>Are you a Microsoft employee?</dt>
+<dd>I am not.</dd>
+
+<dt>Why is the logo so much different from the one on Microsoft's website?</dt>
+<dd>The Visual Studio Code logo is owned by Microsoft, and is reserved for use on releases provided directly by them, so cannot be used here.  I also do not want to mislead anyone into believing that these builds are provided by or officially endorsed by Microsoft directly (see question and answer above).</dd>
+
+<dt>Where are the packages being hosted?</dt>
+<dd>The release packages are hosted on packagecloud.io, who are graciously providing this service for free under their open-source plans.</dd>
+
+<dt>Why make these builds?</dt>
+<dd>The intention of these builds is to get Visual Studio Code into the hands of as many developers (and aspiring developers) as possible.  Doing this means reaching out to those users on the most cost-conscious machines, and therefore supporting lower-end devices based on ARM that may be more complicated for Microsoft to support in an official capacity.</dd>
+
+<dt>Why Visual Studio Code?</dt>
+<dd>I personally wanted to use the tool on my own ARM single-board computers for teaching purposes, and on my Chromebook for daily use, so this is really a case of "scratch your own itch" software.</dd>
+
+<dt>This is really cool. Can I help with this?</dt>
+<dd>Yes you can! Any and all help is appreciated, but you'll need to digitally sign the <a href="https://cla.microsoft.com/">Microsoft CLA</a> first, so that we can contribute any fixes back upstream to the core repository.</dd>
+
+<dt>I've found a bug, where can I raise it?</dt>
+<dd>Bugs can be raised directly in Github at the issues page, but please ensure the bug is related to the installation on ARM and/or Chromebooks as per these scripts.  Issues with the core product should be raised at Microsoft's official repository, so that they'll be fixed in the core (the fixes will propagate to these builds).</dd>
+
+<dt>So who maintains this site?</dt>
+<dd>I'm Jay. Nice to meet you. You can find my details in the <a href="#contact-me">contact section</a>.</dd>
+
+</dl>
+</div>
+</section>
+
+<section class="callout callout-license">
+<div class="callout-content">
+<h1 id="license"><i class="fa fa-balance-scale"></i>&nbsp;License</h1>
+<p>Your use of the software releases discussed here is subject to the terms of the <a href="https://github.com/headmelted/codebuilds/blob/master/LICENSE.txt">CODEBUILDS license</a> and to the <a href="https://github.com/Microsoft/vscode/blob/master/LICENSE.txt">Microsoft vscode license</a>.</p>
+</div>
+</section>
+
+<section class="callout callout-disclaimer">
+<div class="callout-disclaimer">
+<h1 id="disclaimer"><i class="fa fa-legal"></i>&nbsp;DISCLAIMER</h1>
+<p>
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</p>
+</div>
+</section>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99561861-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

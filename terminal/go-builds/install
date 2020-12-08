@@ -1,0 +1,24 @@
+#/!/usr/bin/env bash
+## Vars
+clone="git clone --recurse-submodules"
+
+## Menu
+cmd=(dialog --separate-output --menu "Select modules:" 22 76 16)
+modules=(1 "Lazydocker" off # any option can be set to default to "on"
+    2 "Lazygit" off
+    3 "Lazynpm" off
+    4 "Lazyhub" off
+    5 "CryptoGo" off
+    0 "Exit" off)
+choices=$("${cmd[@]}" "${modules[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $modules; do
+    case $choice in
+    Lazydocker) $clone https://github.com/jesseduffield/lazydocker.git ;;
+    Lazygit) $clone https://github.com/jesseduffield/lazygit.git ;;
+    3) $clone https://github.com/jesseduffield/lazynpm.git ;;
+    4) $clone https://github.com/ryo-ma/lazyhub.git ;;
+    5) $clone https://github.com/isfonzar/CryptoGo.git ;;
+    0) echo "Bye" && exit ;;
+    esac
+done
