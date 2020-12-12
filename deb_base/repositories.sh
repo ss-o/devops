@@ -12,16 +12,6 @@ repoPhp() {
     fi
 }
 
-# Yarn
-##########################################################
-repoYarn() {
-    if [[ ! -f /etc/apt/sources.list.d/yarn.list ]]; then
-        notify "Adding Yarn repository"
-        curl -fsSL "https://dl.yarnpkg.com/debian/pubkey.gpg" | sudo apt-key add -
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    fi
-}
-
 # Docker CE
 ##########################################################
 repoDocker() {

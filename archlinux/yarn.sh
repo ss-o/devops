@@ -2,18 +2,9 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/../utils.sh"
 
-repoYarn() {
-    if [[ ! -f /etc/apt/sources.list.d/yarn.list ]]; then
-        notify "Adding Yarn repository"
-        curl -fsSL "https://dl.yarnpkg.com/debian/pubkey.gpg" | sudo apt-key add -
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    fi
-}
-
 title "Installing Yarn"
-repoYarn
-sudo apt update -y
-sudo apt install -y yarn
+
+sudo pacman -S yarn --noconfirm
 [[ ! -d "$HOME/.npm-global" ]] && mkdir -p ${HOME}/.npm-global
 source ~/.bashrc
 yarn global add babel-eslint

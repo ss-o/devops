@@ -5,7 +5,7 @@ source "${CDIR}/../utils.sh"
 title "Install python"
 
 if ! _cmd_ python; then
-    sudo pacman -S python3
+    sudo pacman -S python3 --noconfirm
 fi
 
 mkdir -p ${HOME}/.local/bin

@@ -10,7 +10,7 @@ sudo pacman -S base base-devel unrar hugo ethtool \
     nmap htop gvfs p7zip lzop arch-install-scripts curl \
     llvm llvm-libs lldb tree shellcheck bash-completion \
     cmatrix mlocate pacman-contrib x11-ssh-askpass \
-    sshfs packer lsof mkcert
+    sshfs packer lsof mkcert --noconfirm
 sudo pkgfile --update
 
 breakLine
