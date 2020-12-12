@@ -17,9 +17,12 @@ sudo apt install -y git curl autoconf bison build-essential \
     libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
 
 sudo rm -rf ~/.rbenv/
+notify "Cloning rbenv"
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 source ~/.bashrc
+notify "Cloning ruby-build"
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 source ~/.bashrc
 rbenv install ${versionRuby} #Installing required version of Ruby
+
 breakLine
