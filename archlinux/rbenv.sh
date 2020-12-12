@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/utils.sh"
+source "${CDIR}/../utils.sh"
 
 title "Installing rbenv"
-notify "Installing dependencies"
-sudo apt install -y git curl autoconf bison build-essential \
-    libssl-dev libyaml-dev libreadline6-dev zlib1g-dev \
-    libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
 
 sudo rm -rf ~/.rbenv
 

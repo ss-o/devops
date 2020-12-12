@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/utils.sh"
+source "${CDIR}/../utils.sh"
 
 # Ensure apt is in non-interactive to avoid prompts
 export DEBIAN_FRONTEND=noninteractive
@@ -20,46 +20,7 @@ install-deps() {
     apt-get-update-if-needed
 
     PACKAGE_LIST="apt-utils \
-        git \
-        build-essential \
-        gvfs-bin \
-        cmake \
-        make \
-        gcc \
-        g++ \
-        openssh-client \
-        gnupg2 \
-        iproute2 \
-        procps \
-        lsof \
-        htop \
-        net-tools \
-        psmisc \
-        curl \
-        wget \
-        rsync \
-        ca-certificates \
-        unzip \
-        zip \
-        nano \
-        vim-tiny \
-        less \
-        jq \
-        lsb-release \
-        apt-transport-https \
-        dialog \
-        libc6 \
-        libgcc1 \
-        libgssapi-krb5-2 \
-        libicu[0-9][0-9] \
-        liblttng-ust0 \
-        libstdc++6 \
-        zlib1g \
-        locales \
-        sudo \
-        ncdu \
-        man-db \
-        strace"
+    profile-sync-daemon"
 }
 install-deps
 

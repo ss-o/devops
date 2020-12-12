@@ -9,8 +9,6 @@ versionGo="1.15.6"
 versionNvm="0.37.2"
 versionNode="12.2.0"
 versionRuby="2.7.0"
-versionHelm="2.14.1"
-versionSops="3.1.1"
 
 # Disallow running with sudo or su
 ##########################################################
@@ -45,6 +43,15 @@ curlToFile() {
     sudo curl -fSL "$1" -o "$2"
 }
 
+apt-get-update-if-needed() {
+    if [ ! -d "/var/lib/apt/lists" ] || [ "$(ls /var/lib/apt/lists/ | wc -l)" = "0" ]; then
+        echo "Running apt-get update..."
+        apt-get update -y
+    else
+        echo "Skipping apt-get update."
+    fi
+}
+
 _cmd_() { command -v "$1" >/dev/null 2>&1; }
 _exec_() { type -fP "$1" >/dev/null 2>&1; }
 _miss_dir() { [[ ! -d "$1" ]] && mkdir -p "$1"; }
@@ -52,17 +59,6 @@ _execroot() { [[ "$(whoami)" != "root" ]] && exec sudo -- "$0" "$@"; }
 
 _date() { date "+%d-%m-%Y"; }
 _time() { date "+%H-%M-%S"; }
-
-## System information
-if ! _cmd_ lsb_release; then
-    sudo apt install -y lsb-release
-fi
-if ! _cmd_ git; then
-    sudo apt install -y git
-fi
-versionDeb="$(lsb_release -c -s)"
-versionArch="$(uname -m)"
-versionKernel="$(uname -r)"
 
 if [ -f "/etc/os-release" ]; then
     distroname=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
@@ -79,3 +75,23 @@ elif [ -f "/etc/alpine-release" ]; then
 else
     distroname="Unknown"
 fi
+
+## System information
+if [ "$distroname" = "debian" ]; then
+    apt-get-update-if-needed
+    ! _cmd_ lsb_release && sudo apt install -y lsb-release
+    ! _cmd_ git && sudo apt install -y git
+fi
+if [ "$distroname" = "ubuntu" ]; then
+    apt-get-update-if-needed
+    ! _cmd_ lsb_release && sudo apt install -y lsb-release
+    ! _cmd_ git && sudo apt install -y git
+fi
+if [ "$distroname" = "arch" ]; then
+    ! _cmd_ lsb_release && sudo pacman -S lsb-release --noconfirm
+    ! _cmd_ git && sudo pacman -S git --noconfirm
+fi
+
+versionDeb="$(lsb_release -c -s)"
+versionArch="$(uname -m)"
+versionKernel="$(uname -r)"

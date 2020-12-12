@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/utils.sh"
+source "${CDIR}/../utils.sh"
 
 title "Installing Python3 with PIP"
 sudo apt install -y build-essential libssl-dev libffi-dev python-dev python3-pip
