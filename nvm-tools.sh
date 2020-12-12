@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/../utils.sh"
+source "${CDIR}/utils.sh"
 
 title "Installing NVM"
 [[ -d "$HOME/.nvm" ]] && sudo rm -r "$HOME/.nvm"
@@ -14,6 +14,7 @@ git checkout v${versionNvm}
 . "$NVM_DIR/nvm.sh"
 cd - >/dev/null 2>&1
 
+[ ! -d "$HOME/.npm-global" ] && mkdir "$HOME/.npm-global"
 source ~/.bashrc
 nvm install v${versionNode} --latest-npm
 

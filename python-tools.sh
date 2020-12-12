@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/../utils.sh"
+source "${CDIR}/utils.sh"
 
-title "Install python"
+title "Installing Python, PIP & tools"
 
 if ! _cmd_ python; then
-    sudo pacman -S python3 --noconfirm
+    if _exec_ apt; then
+        sudo apt install -y build-essential libssl-dev libffi-dev python-dev python3-pip
+    fi
+    if _exec_ pacman; then
+        sudo pacman -S python --noconfirm
+    fi
 fi
 
 mkdir -p ${HOME}/.local/bin

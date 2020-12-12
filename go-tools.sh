@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/../utils.sh"
+source "${CDIR}/utils.sh"
 
 title "Installing GoLang ${versionGo}"
 
@@ -25,6 +25,8 @@ rm go.tar.gz -f
 
 # shellcheck source=/dev/null
 source ~/.bashrc
+
+notify "Installing Go tools"
 
 GO111MODULE=on go get golang.org/x/tools/gopls@latest
 GO111MODULE="on" go get -u -v golang.org/x/tools/cmd/goimports
