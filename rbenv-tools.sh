@@ -25,5 +25,3 @@ title "Installing DAPP"
 gem install mixlib-cli -v 1.7.0
 gem install dapp
 breakLine
-gem update
-breakLine
