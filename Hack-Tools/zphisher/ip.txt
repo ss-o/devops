@@ -1,5 +1,0 @@
-
-IP: 2a03:2880:32ff:75::face:b00c
- User-Agent: facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
-IP: 2a03:2880:32ff:b::face:b00c
- User-Agent: facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
