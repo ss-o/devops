@@ -26,6 +26,7 @@ pip install --user importmagic
 pip install --user pipenv
 pip install --user progressbar2
 pip install --user pylint
+pip install --user pygments
 pip install --user python-language-server
 pip install --user trash-cli
 pip install --user virtualenv

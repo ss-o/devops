@@ -17,7 +17,7 @@ source ~/.bashrc
 notify "Installing Ruby"
 rbenv install ${versionRuby} #Installing required version of Ruby
 rbenv global ${versionRuby}
-gem install bundler
+gem install bundler jekyll sass compass solargraph rawler rdoc irb rails
 
 breakLine
 

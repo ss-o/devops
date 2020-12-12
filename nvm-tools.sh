@@ -16,6 +16,7 @@ cd - >/dev/null 2>&1
 
 [ ! -d "$HOME/.npm-global" ] && mkdir "$HOME/.npm-global"
 source ~/.bashrc
-nvm install v${versionNode} --latest-npm
+nvm install v${versionNode}
+nvm install-latest-npm
 
 breakLine

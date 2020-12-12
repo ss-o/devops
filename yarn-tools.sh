@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/../utils.sh"
+source "${CDIR}/utils.sh"
 
 repoYarn() {
     if [[ ! -f /etc/apt/sources.list.d/yarn.list ]]; then
@@ -22,6 +22,7 @@ if ! _cmd_ python; then
     fi
 fi
 
+[ ! -d "$HOME/.npm-global" ] && mkdir "$HOME/.npm-global"
 source ~/.bashrc
 
 notify "Installing Yarn tools"
