@@ -15,6 +15,7 @@ fi
 
 mkdir -p ${HOME}/.local/bin
 source ~/.bashrc
+
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 ${PWD}/get-pip.py --user
 pip install --user --upgrade pip
@@ -74,6 +75,8 @@ rm -fr get-pip.py
 
 #pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
 notify "Generating ~/.pylintrc"
-pylint --generate-rcfile >~/.pylintrc
+
+pylint --generate-rcfile > ~/.pylintrc
 
 breakLine
+
