@@ -2,11 +2,28 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
-title "Installing Yarn"
+title "Installing NVM"
+[[ -d "$HOME/.nvm" ]] && sudo rm -r "$HOME/.nvm"
+mkdir -p ~/.nvm
+source ~/.bashrc
+notify "Cloning NVM"
 
-if _cmd_ npm; then
-    npm install -g yarn
-fi
+git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+cd "$NVM_DIR"
+git checkout v${versionNvm}
+. "$NVM_DIR/nvm.sh"
+cd - >/dev/null 2>&1
+
+source ~/.bashrc
+
+notify "Installing node"
+nvm install v${versionNode}
+
+notify "Installing npm"
+nvm install-latest-npm
+
+notify "Installing yarn"
+npm install -g yarn
 
 source ~/.bashrc
 
