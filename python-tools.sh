@@ -30,6 +30,7 @@ pip install --user vscodex
 pip install --user vstask
 pip install --user pppiv
 pip install --user vscod
+pip install --user code-faster
 pip install --user progressbar2
 pip install --user faker
 pip install --user vspoetry
