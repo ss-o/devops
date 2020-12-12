@@ -10,7 +10,11 @@ source "${CDIR}/utils.sh"
 #sudo gem install dapp -v ${versionDapp}
 #breakLine
 
-title "Installing ruby & rbenv"
+title "Installing rbenv"
+notify "Installing dependencies"
+sudo apt install -v git curl autoconf bison build-essential \
+    libssl-dev libyaml-dev libreadline6-dev zlib1g-dev \
+    libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
 sudo rm -rf ~/.rbenv/
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 source ~/.bashrc
