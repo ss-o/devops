@@ -28,9 +28,8 @@ source ~/.bashrc
 
 notify "Installing Go tools"
 echo
-go get -u github.com/Code-Hex/go-install-tools
-go-install-tools
-
+#go get -u github.com/Code-Hex/go-install-tools
+go get -u gocloud.dev
 go get -u -d github.com/magefile/mage
 cd "${GOPATH}/src/github.com/magefile/mage"
 go run bootstrap.go

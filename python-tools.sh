@@ -43,9 +43,8 @@ pip install --user pydoc_utils
 pip install --user pyflakes
 pip install --user pylint
 pip install --user python-language-server
-pip install --user r7insight_python
-pip install --user redis
 pip install --user tldr
+pip install --user conda
 pip install --user pygments
 pip install --user virtualenv
 pip install --user virtualenvwrapper
