@@ -17,29 +17,14 @@ mkdir -p ${HOME}/.local/bin
 source ~/.bashrc
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 ${PWD}/get-pip.py --user
+python3 -m pip install --user --upgrade pip
+python3 -m pip install --user virtualenv
 pip install --user --upgrade pip
 pip install --user autopep8
-pip install --user diagrams
-pip install --user wheel
-pip install --user setuptools
 pip install --user httpie
 pip install --user importmagic
-pip install --user pipx
 pip install --user pipenv
-pip install --user vscodex
-pip install --user vstask
-pip install --user pppiv
-pip install --user vscod
-pip install --user code-faster
-pip install --user progressbar2
-pip install --user faker
-pip install --user vspoetry
-pip install --user flake8
-pip install --user pylint
 pip install --user pygments
-pip install --user python-language-server
-pip install --user trash-cli
-pip install --user virtualenv
 pip install --user virtualenvwrapper
 rm -fr get-pip.py
 
