@@ -36,5 +36,6 @@ go get -u -v github.com/kyoshidajp/ghkw
 go get -u -v github.com/simeji/jid/cmd/jid
 go get -u -v github.com/jmhodges/jsonpp
 GO111MODULE="on" go get -u -v github.com/mithrandie/csvq
+go get -u -v github.com/google/go-github/v32/github
 
 breakLine
