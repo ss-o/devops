@@ -28,15 +28,14 @@ source ~/.bashrc
 
 notify "Installing Go tools"
 
-GO111MODULE="on" go get golang.org/x/tools/gopls@latest
-GO111MODULE="on" go get -u -v golang.org/x/tools/cmd/goimports
-go get -u -v github.com/golang/dep/cmd/dep
-GO111MODULE="on" go get -u -v github.com/x-motemen/ghq
-go get -u -v github.com/kyoshidajp/ghkw
-go get -u -v github.com/simeji/jid/cmd/jid
-go get -u -v github.com/jmhodges/jsonpp
-GO111MODULE="on" go get -u -v github.com/mithrandie/csvq
-go get -u github.com/bradleyfalzon/ghinstallation
-
+	GO111MODULE="on" go get golang.org/x/tools/gopls@latest
+	GO111MODULE="on" go get -u -v golang.org/x/tools/cmd/goimports
+	GO111MODULE="on" go get -u -v github.com/golang/dep/cmd/dep
+	GO111MODULE="on" go get -u -v github.com/x-motemen/ghq
+	GO111MODULE="on" go get -u -v github.com/kyoshidajp/ghkw
+	GO111MODULE="on" go get -u -v github.com/simeji/jid/cmd/jid
+        GO111MODULE="on" go get -u -v github.com/jmhodges/jsonpp
+	GO111MODULE="on" go get -u -v github.com/mithrandie/csvq
+        GO111MODULE="on" go get -u github.com/Code-Hex/go-install-tools
 
 breakLine
