@@ -2,29 +2,23 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
-title "Installing rbenv"
-
+title "Installing rbenv" && echo
 sudo rm -rf ~/.rbenv
 
-notify "Cloning rbenv"
+notify "Cloning rbenv" && echo
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 source ~/.bashrc
 
-notify "Cloning ruby-build"
+notify "Cloning ruby-build" && echo
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 source ~/.bashrc
 
-notify "Installing Ruby"
+notify "Installing Ruby" && echo
 rbenv install ${versionRuby} #Installing required version of Ruby
 rbenv global ${versionRuby}
 
-gem install bundler rdoc rails
-
-breakLine
-
-title "Installing DAPP"
-gem install mixlib-cli -v 1.7.0
-gem install dapp
+notify "Gem installing tools" && echo
+gem install bundler rdoc rails mixlib-cli dapp
 
 breakLine
 

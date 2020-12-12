@@ -2,7 +2,7 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
-title "Installing Python, PIP & tools"
+title "Installing Python"
 
 #if ! _cmd_ python; then
 if _exec_ apt; then
@@ -16,18 +16,18 @@ fi
 mkdir -p ${HOME}/.local/bin
 source ~/.bashrc
 
+notify "Installing PIP" && echo
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 ${PWD}/get-pip.py --user
+
+notify "Installing Tools using PIP" && echo
 pip install --user --upgrade pip
 pip install --user autopep8
 pip install --user black
 pip install --user cheat
-pip install --user diagrams
 pip install --user django
 pip install --user faker
 pip install --user flake8
-pip install --user gif-for-cli
-pip install --user graph-cli
 pip install --user httpie
 pip install --user importmagic
 pip install --user jupyter
@@ -54,10 +54,9 @@ pip install --user yapf
 rm -fr get-pip.py
 
 #pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
-notify "Generating ~/.pylintrc"
+notify "Generating ~/.pylintrc" && echo
 pylint --generate-rcfile > ~/.pylintrc
 
 breakLine
 
 exec "$SHELL"
-
