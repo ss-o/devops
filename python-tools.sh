@@ -18,12 +18,9 @@ source ~/.bashrc
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 ${PWD}/get-pip.py --user
 pip install --user --upgrade pip
-pip install --user ansible
-pip install --user ansible-lint
 pip install --user autopep8
 pip install --user black
 pip install --user cheat
-pip install --user chromedriver-binary
 pip install --user diagrams
 pip install --user django
 pip install --user faker
@@ -32,15 +29,9 @@ pip install --user gif-for-cli
 pip install --user graph-cli
 pip install --user httpie
 pip install --user importmagic
-pip install --user ipywidgets
-pip install --user jedi
 pip install --user jupyter
-pip install --user jupyterlab
-pip install --user jupyterthemes
 pip install --user litecli
 pip install --user matplotlib
-pip install --user neovim
-pip install --user nose
 pip install --user pandas
 pip install --user pipenv
 pip install --user poetry
@@ -53,19 +44,8 @@ pip install --user pylint
 pip install --user python-language-server
 pip install --user r7insight_python
 pip install --user redis
-pip install --user requests_mock
-pip install --user rope
-pip install --user rtv
-pip install --user scipy
-pip install --user scrapy
-pip install --user seaborn
-pip install --user selenium
-pip install --user speedtest-cli
-pip install --user streamlink
 pip install --user tldr
-pip install --user trash-cli
 pip install --user pygments
-pip install --user truffleHog
 pip install --user virtualenv
 pip install --user virtualenvwrapper
 pip install --user yapf
@@ -74,6 +54,8 @@ rm -fr get-pip.py
 
 #pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
 notify "Generating ~/.pylintrc"
-pylint --generate-rcfile >~/.pylintrc
+pylint --generate-rcfile > ~/.pylintrc
 
 breakLine
+
+exec "$SHELL"

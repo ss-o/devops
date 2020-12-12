@@ -17,11 +17,15 @@ source ~/.bashrc
 notify "Installing Ruby"
 rbenv install ${versionRuby} #Installing required version of Ruby
 rbenv global ${versionRuby}
-gem install bundler jekyll sass compass solargraph rawler rdoc irb rails
+
+gem install bundler rdoc rails
 
 breakLine
 
 title "Installing DAPP"
 gem install mixlib-cli -v 1.7.0
 gem install dapp
+
 breakLine
+
+exec "$SHELL"
