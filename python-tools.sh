@@ -26,8 +26,13 @@ pip install --user httpie
 pip install --user importmagic
 pip install --user pipx
 pip install --user pipenv
+pip install --user vscodex
+pip install --user vstask
+pip install --user pppiv
+pip install --user vscod
 pip install --user progressbar2
 pip install --user faker
+pip install --user vspoetry
 pip install --user flake8
 pip install --user pylint
 pip install --user pygments
