@@ -7,12 +7,14 @@ title "Installing NVM"
 mkdir -p ~/.nvm
 source ~/.bashrc
 notify "Cloning NVM"
+
 git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
 cd "$NVM_DIR"
 git checkout v${versionNvm}
 . "$NVM_DIR/nvm.sh"
-source ~/.bashrc
+cd - >/dev/null 2>&1
 
-nvm install ${versionNode} --latest-npm
+source ~/.bashrc
+nvm install v${versionNode} --latest-npm
 
 breakLine
