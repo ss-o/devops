@@ -22,6 +22,11 @@ install-deps() {
 
     PACKAGE_LIST="apt-utils \
         git \
+        build-essential \
+        cmake \
+        make \
+        gcc \
+        g++ \
         openssh-client \
         gnupg2 \
         iproute2 \
