@@ -15,6 +15,7 @@ fi
 
 mkdir -p ${HOME}/.local/bin
 source ~/.bashrc
+
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 ${PWD}/get-pip.py --user
 pip install --user --upgrade pip
@@ -59,3 +60,4 @@ pylint --generate-rcfile > ~/.pylintrc
 breakLine
 
 exec "$SHELL"
+
