@@ -12,5 +12,7 @@ cd "$NVM_DIR"
 git checkout v${versionNvm}
 . "$NVM_DIR/nvm.sh"
 source ~/.bashrc
-nvm install ${versionNode}
+
+nvm install ${versionNode} --latest-npm
+
 breakLine
