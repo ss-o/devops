@@ -6,6 +6,7 @@ CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ###############################################################
 versionPhp="7.4"
 versionGo="1.15.6"
+versionNvm="0.37.2"
 versionNode="12"
 versionRuby="2.7.0"
 versionHelm="2.14.1"
