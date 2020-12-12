@@ -16,16 +16,15 @@ fi
 mkdir -p ${HOME}/.local/bin
 source ~/.bashrc
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python ${PWD}/get-pip.py --user
+python3 ${PWD}/get-pip.py --user
 pip install --user --upgrade pip
-pip install --user ansible
-pip install --user ansible-lint
 pip install --user autopep8
 pip install --user diagrams
 pip install --user wheel
 pip install --user setuptools
 pip install --user httpie
 pip install --user importmagic
+pip install --user pipx
 pip install --user pipenv
 pip install --user progressbar2
 pip install --user faker
@@ -38,6 +37,6 @@ pip install --user virtualenv
 pip install --user virtualenvwrapper
 rm -fr get-pip.py
 
-pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
+#pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
 
 breakLine
