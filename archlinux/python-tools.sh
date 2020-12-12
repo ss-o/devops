@@ -15,6 +15,8 @@ python ${PWD}/get-pip.py --user
 sudo ln -vsf ${PWD}/usr/share/zsh/site-functions/_pipenv /usr/share/zsh/site-functions/_pipenv
 pip install --user --upgrade pip
 pip install --user autopep8
+pip install --user wheel
+pip install --user setuptools
 pip install --user httpie
 pip install --user importmagic
 pip install --user pipenv
