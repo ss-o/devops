@@ -29,6 +29,7 @@ source ~/.bashrc
 
 notify "Installing Npm tools" && echo
 npm install -g typescript
+npm install -g markdown-it
 
 notify "Installing Yarn tools" && echo
 yarn global add bash-language-server
