@@ -2,17 +2,18 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
-title "Installing rbenv"
+#title "Installing Ruby with DAPP v${versionDapp}"
+#sudo apt install -y ruby-dev gcc pkg-config
+#sudo chown -R ${USER} /var/lib/gems
+#sudo chown -R ${USER} /usr/local/bin
+#sudo gem install mixlib-cli -v 1.7.0
+#sudo gem install dapp -v ${versionDapp}
+#breakLine
 
+title "Installing ruby & rbenv"
 sudo rm -rf ~/.rbenv/
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-#		echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-#		echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-#		export PATH="$HOME/.rbenv/bin:$PATH"
-#		eval "$(rbenv init -)"
-#		source ~/.bashrc
-#		type rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-#		echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-#		source ~/.bashrc
-rbenv install 2.7.1 #Installing required version of Ruby
+source ~/.bashrc
+rbenv install ${versionRuby} #Installing required version of Ruby
+breakLine

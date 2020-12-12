@@ -7,10 +7,9 @@ CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 versionPhp="7.4"
 versionGo="1.15.6"
 versionNode="12"
+versionRuby="2.7.0"
 versionHelm="2.14.1"
 versionSops="3.1.1"
-versionDapp="0.27.14"
-
 # Disallow running with sudo or su
 ##########################################################
 if [[ "$EUID" -eq 0 ]]; then
