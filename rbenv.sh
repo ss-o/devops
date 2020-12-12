@@ -13,6 +13,7 @@ source "${CDIR}/utils.sh"
 title "Installing ruby & rbenv"
 sudo rm -rf ~/.rbenv/
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+source ~/.bashrc
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 source ~/.bashrc
 rbenv install ${versionRuby} #Installing required version of Ruby
