@@ -24,9 +24,9 @@ rbenv global ${versionRuby}
 
 breakLine
 
-title "Installing Ruby with DAPP v${versionDapp}"
+title "Installing DAPP"
 gem install mixlib-cli -v 1.7.0
-gem install dapp -v ${versionDapp}
+gem install dapp
 breakLine
 
 breakLine

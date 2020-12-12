@@ -8,7 +8,6 @@ versionPhp="7.4"
 versionGo="1.15.6"
 versionNode="12"
 versionRuby="2.7.0"
-versionDapp="0.43.2"
 versionHelm="2.14.1"
 versionSops="3.1.1"
 
