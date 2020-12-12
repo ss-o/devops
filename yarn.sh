@@ -4,5 +4,7 @@ source "${CDIR}/utils.sh"
 source "${CDIR}/repositories.sh"
 
 title "Installing Yarn"
+repoYarn
+sudo apt update -y
 sudo apt install -y yarn
 breakLine
