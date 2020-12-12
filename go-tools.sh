@@ -28,7 +28,8 @@ source ~/.bashrc
 
 notify "Installing Go tools"
 
-GO111MODULE=on go get golang.org/x/tools/gopls@latest
+go get -u github.com/bradleyfalzon/ghinstallation
+GO111MODULE="on" go get golang.org/x/tools/gopls@latest
 GO111MODULE="on" go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v github.com/golang/dep/cmd/dep
 GO111MODULE="on" go get -u -v github.com/x-motemen/ghq
