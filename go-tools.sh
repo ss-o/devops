@@ -28,7 +28,6 @@ source ~/.bashrc
 
 notify "Installing Go tools"
 
-go get -u github.com/bradleyfalzon/ghinstallation
 GO111MODULE="on" go get golang.org/x/tools/gopls@latest
 GO111MODULE="on" go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v github.com/golang/dep/cmd/dep
@@ -37,5 +36,7 @@ go get -u -v github.com/kyoshidajp/ghkw
 go get -u -v github.com/simeji/jid/cmd/jid
 go get -u -v github.com/jmhodges/jsonpp
 GO111MODULE="on" go get -u -v github.com/mithrandie/csvq
+go get -u github.com/bradleyfalzon/ghinstallation
+
 
 breakLine
