@@ -26,4 +26,13 @@ rm go.tar.gz -f
 # shellcheck source=/dev/null
 source ~/.bashrc
 
+GO111MODULE=on go get golang.org/x/tools/gopls@latest
+GO111MODULE="on" go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v github.com/golang/dep/cmd/dep
+GO111MODULE="on" go get -u -v github.com/x-motemen/ghq
+go get -u -v github.com/kyoshidajp/ghkw
+go get -u -v github.com/simeji/jid/cmd/jid
+go get -u -v github.com/jmhodges/jsonpp
+GO111MODULE="on" go get -u -v github.com/mithrandie/csvq
+
 breakLine

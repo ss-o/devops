@@ -21,6 +21,7 @@ source ~/.bashrc
 notify "Installing Ruby"
 rbenv install ${versionRuby} #Installing required version of Ruby
 rbenv global ${versionRuby}
+gem install bundler
 
 breakLine
 
@@ -28,5 +29,5 @@ title "Installing DAPP"
 gem install mixlib-cli -v 1.7.0
 gem install dapp
 breakLine
-
+gem update
 breakLine

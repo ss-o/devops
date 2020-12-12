@@ -4,13 +4,11 @@ source "${CDIR}/../utils.sh"
 
 title "Installing Python3 with PIP"
 sudo apt install -y build-essential libssl-dev libffi-dev python-dev python3-pip
-sudo ln -s /usr/bin/pip3 /usr/bin/pip
-export PATH=/usr/local/bin/python:$PATH
 
 mkdir -p ${HOME}/.local/bin
 source ~/.bashrc
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python ${PWD}/get-pip.py --user
+python3 ${PWD}/get-pip.py --user
 sudo ln -vsf ${PWD}/usr/share/zsh/site-functions/_pipenv /usr/share/zsh/site-functions/_pipenv
 pip install --user --upgrade pip
 pip install --user autopep8
