@@ -11,11 +11,20 @@ repoYarn() {
 }
 
 title "Installing Yarn"
-repoYarn
-sudo apt update -y
-sudo apt install -y yarn
-[[ ! -d "$HOME/.npm-global" ]] && mkdir -p ${HOME}/.npm-global
+
+if ! _cmd_ python; then
+    if _exec_ apt; then
+        repoYarn
+        sudo apt update -y && sudo apt install -y --no-install-recommends yarn
+    fi
+    if _exec_ pacman; then
+        sudo pacman -S yarn
+    fi
+fi
+
 source ~/.bashrc
+
+notify "Installing Yarn tools"
 yarn global add babel-eslint
 yarn global add bash-language-server
 yarn global add cloc
