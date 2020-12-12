@@ -8,6 +8,8 @@ if ! _cmd_ python; then
     sudo pacman -S python3
 fi
 
+mkdir -p ${HOME}/.local/bin
+source ~/.bashrc
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python ${PWD}/get-pip.py --user
 sudo ln -vsf ${PWD}/usr/share/zsh/site-functions/_pipenv /usr/share/zsh/site-functions/_pipenv

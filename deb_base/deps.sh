@@ -20,6 +20,8 @@ install-deps() {
     apt-get-update-if-needed
 
     PACKAGE_LIST="apt-utils \
+    shellcheck \
+    sshfs \
     profile-sync-daemon"
 }
 install-deps
