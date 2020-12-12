@@ -64,7 +64,8 @@ python3 ${PWD}/get-pip.py --user
 	pip install --user streamlink
 	pip install --user tldr
 	pip install --user trash-cli
-	pip install --user truffleHog
+        pip install --user pygments
+     	pip install --user truffleHog
 	pip install --user virtualenv
 	pip install --user virtualenvwrapper
 	pip install --user yapf
