@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/../utils.sh"
+source "${CDIR}/utils.sh"
 
 title "Installing Composer"
 php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
