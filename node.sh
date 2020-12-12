@@ -4,6 +4,6 @@ source "${CDIR}/utils.sh"
 
 title "Installing Node ${versionNode}"
 curl -L "https://deb.nodesource.com/setup_${versionNode}.x" | sudo -E bash -
-sudo apt install -y nodejs npm
+sudo apt install -y nodejs
 
 breakLine
