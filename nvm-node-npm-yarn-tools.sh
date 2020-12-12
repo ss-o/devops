@@ -66,4 +66,6 @@ yarn global add vue-language-server
 yarn global add vue-native-cli
 yarn global add webpack
 
+yarn global upgrade
+
 breakLine
