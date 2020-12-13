@@ -102,6 +102,13 @@ if [ "$distroname" = "ubuntu" ]; then
     ! _cmd_ git && sudo apt install -y git
 fi
 if [ "$distroname" = "arch" ]; then
+    sudo pacman -Syu --noconfirm
+    if ! _cmd_ yay; then
+        wget https://github.com/Jguer/yay/releases/download/v10.1.0/yay_10.1.0_x86_64.tar.gz
+        tar xzvf yay_10.1.0_x86_64.tar.gz
+        sudo cp -r yay_10.1.0_x86_64/yay /usr/bin/yay
+        sudo rm -r "yay_10.1.0_x86_64.tar.gz" "yay_10.1.0_x86_64"
+    fi
     ! _cmd_ lsb_release && sudo pacman -S lsb-release --noconfirm
     ! _cmd_ git && sudo pacman -S git --noconfirm
 fi
