@@ -3,34 +3,27 @@ CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
 if _cmd_ apt; then
-apt-deps
+sudo apt install -y build-essential \
+python3-dev python3-pip \
+python3-venv zlib1g-dev libssl-dev libffi-dev \
+libncurses5-dev libgdbm-dev libnss3-dev \
+libssl-dev libreadline-dev libffi-dev curl
 fi
 if _cmd_ pacman; then
-pacman-deps
+sudo pacman -S cmake gcc python python-virtualenv python-pip python-setuptools
 fi
+
 [[ ! -d "$HOME/.local" ]] && mkdir -p "$HOME/.local"
 [[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
 source ~/.bashrc
 
-curlToFile "https://www.python.org/ftp/python/3.9.1/Python-${versionPython}.tar.xz" "python.tar.xz"
-tar -xvf python.tar.xz
-
-cd Python-${versionPython}
-./configure --with-ensurepip=install
-make
-sudo make altinstall
-cd - >/dev/null 2>&1
-
-sudo rm -r Python-${versionPython} python.tar.xz
-
-sudo ln -s "/usr/bin/pip3" "/usr/bin/pip"
-sudo ln -s "/usr/local/bin/python3.*" "/usr/local/bin/python"
-
-/usr/local/bin/python -m pip install --user --upgrade pip setuptools wheel
+sudo ln -sf /usr/bin/python3 /usr/bin/python
+sudo ln -sf /usr/bin/pip3 /usr/bin/pip
 
 notify "Installing PIP" && echo
+
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-/usr/local/bin/python ${PWD}/get-pip.py --user
+python ${PWD}/get-pip.py --user
 
 notify "Installing Tools using PIP" && echo
 pip install --user --upgrade pip
