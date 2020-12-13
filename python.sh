@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
-set -e
-
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
+if _cmd_ apt; then
+apt-deps
+fi
+if _cmd_ pacman; then
+pacman-deps
+fi
 [[ ! -d "$HOME/.local" ]] && mkdir -p "$HOME/.local"
+[[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
 source ~/.bashrc
 
 curlToFile "https://www.python.org/ftp/python/3.9.1/Python-${versionPython}.tar.xz" "python.tar.xz"
-tar xvf python.tar.xz
+tar -xvf python.tar.xz
 
 cd Python-${versionPython}
 ./configure --with-ensurepip=install
