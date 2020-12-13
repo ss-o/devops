@@ -18,6 +18,7 @@ source ~/.bashrc
 
 notify "Installing Node" && echo
 nvm install v${versionNode}
+nvm use v${versionNode}
 
 notify "Installing Npm" && echo
 nvm install-latest-npm
@@ -33,12 +34,8 @@ npm install -g markdown-it
 
 notify "Installing Yarn tools" && echo
 yarn global add bash-language-server
-yarn global add dockerfile-language-server-nodejs
-yarn global add eslint-cli
 yarn global add heroku
 yarn global add jshint
-yarn global add logo.svg
-yarn global add netlify-cli
 yarn global add prettier
 yarn global add typescript-language-server
 yarn global add webpack

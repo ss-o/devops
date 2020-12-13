@@ -2,23 +2,33 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
-title "Installing Python"
-
-#if ! _cmd_ python; then
+if ! _cmd_ make; then
 if _exec_ apt; then
-	sudo apt install -y build-essential libssl-dev libffi-dev python3-venv python-tk python-dev python3-pip
+        sudo apt install -y build-essential make
 fi
 if _exec_ pacman; then
-	sudo pacman -S python python-virtualenv python-pipenv python-pip --noconfirm
+        sudo pacman -S make gcc c++ --noconfirm
 fi
-#fi
+fi
+
+title "Installing Python" && echo
 
 mkdir -p ${HOME}/.local/bin
 source ~/.bashrc
 
+git clone https://github.com/ss-o/cpython.git
+cd cpython
+git checkout v${versionPython}
+./configure --prefix=$HOME/.local
+make
+sudo make install
+cd - >/dev/null 2>&1
+sudo rm -r cpython
+
 notify "Installing PIP" && echo
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 ${PWD}/get-pip.py --user
+python3 ${PWD}/get-pip.py --user --prefix="$HOME/.local"
+python3 -m pip install --upgrade pip setuptools wheel
 
 notify "Installing Tools using PIP" && echo
 pip install --user --upgrade pip
