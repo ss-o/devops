@@ -11,18 +11,21 @@ curlToFile "https://www.python.org/ftp/python/3.9.1/Python-${versionPython}.tar.
 tar xvf python.tar.xz
 
 cd Python-${versionPython}
-./configure --with-ensurepip=install --prefix=/usr
+./configure --with-ensurepip=install
 make
 sudo make altinstall
 cd - >/dev/null 2>&1
 
 sudo rm -r Python-${versionPython} python.tar.xz
 
-python3 -m pip3 install --user --upgrade pip setuptools wheel
+sudo ln -s "/usr/bin/pip3" "/usr/bin/pip"
+sudo ln -s "/usr/local/bin/python3.*" "/usr/local/bin/python"
+
+/usr/local/bin/python -m pip install --user --upgrade pip setuptools wheel
 
 notify "Installing PIP" && echo
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 ${PWD}/get-pip.py --user
+/usr/local/bin/python ${PWD}/get-pip.py --user
 
 notify "Installing Tools using PIP" && echo
 pip install --user --upgrade pip
