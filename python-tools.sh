@@ -2,14 +2,13 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
-if ! _cmd_ make; then
 if _exec_ apt; then
-        sudo apt install -y build-essential make
+       . "deb_base/deps-devops.sh"
 fi
 if _exec_ pacman; then
-        sudo pacman -S make gcc c++ --noconfirm
+       . "archlinux/deps.sh"
 fi
-fi
+
 
 title "Installing Python" && echo
 
@@ -45,7 +44,7 @@ pip install --user autopep8
 #pip install --user litecli
 #pip install --user matplotlib
 #pip install --user pandas
-#pip install --user pipenv
+pip install --user pipenv
 #pip install --user poetry
 #pip install --user progressbar2
 #pip install --user psycopg2-binary
