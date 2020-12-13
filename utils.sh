@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -e
+
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ###############################################################
@@ -45,10 +47,18 @@ curlToFile() {
     sudo curl -fSL "$1" -o "$2"
 }
 
+apt-deps() {
+    source apt.list
+}
+
+pacman-deps() {
+    source pacman.list
+}
+
 apt-get-update-if-needed() {
     if [ ! -d "/var/lib/apt/lists" ] || [ "$(ls /var/lib/apt/lists/ | wc -l)" = "0" ]; then
         echo "Running apt-get update..."
-        apt-get update -y
+        sudo apt-get update -y
     else
         echo "Skipping apt-get update."
     fi
@@ -80,11 +90,13 @@ fi
 
 ## System information
 if [ "$distroname" = "debian" ]; then
+    export DEBIAN_FRONTEND=noninteractive
     apt-get-update-if-needed
     ! _cmd_ lsb_release && sudo apt install -y lsb-release
     ! _cmd_ git && sudo apt install -y git
 fi
 if [ "$distroname" = "ubuntu" ]; then
+    export DEBIAN_FRONTEND=noninteractive
     apt-get-update-if-needed
     ! _cmd_ lsb_release && sudo apt install -y lsb-release
     ! _cmd_ git && sudo apt install -y git
