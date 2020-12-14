@@ -55,6 +55,18 @@ pacman-deps() {
     source pacman.list
 }
 
+_confirm() {
+    read -r -p "${1:-Continue?} [y/N]" response
+    case $response in
+    [yY][eE][sS] | [yY])
+        true
+        ;;
+    *)
+        false
+        ;;
+    esac
+}
+
 apt-get-update-if-needed() {
     if [ ! -d "/var/lib/apt/lists" ] || [ "$(ls /var/lib/apt/lists/ | wc -l)" = "0" ]; then
         echo "Running apt-get update..."

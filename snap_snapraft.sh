@@ -10,16 +10,18 @@ elif _exec_ pacman; then
     sudo pacman -S snapd --noconfirm
 fi
 
-notify "Enabling snapd & apparmor service"
+notify "Enabling snapd & apparmor service" && echo
 sudo systemctl start snapd
 sudo systemctl enable snapd
 sudo systemctl start apparmor
 sudo systemctl enable apparmor
 
-notify "Reloading bash"
+notify "Reloading bash" && echo
 source ~/.bashrc
 
-notify "Reloading snap"
+notify "Reloading snap" && echo
 sudo snap refresh
+notify "Installing snapcraft" && echo
+sudo snap install snapcraft --classic
 
 breakLine

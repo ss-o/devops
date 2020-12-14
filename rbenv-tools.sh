@@ -2,15 +2,24 @@
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
+if _cmd_ rbenv; then
+notify "rbenv already install installed, wnat to reinstall?" && echo
+if _confirm; then
+return
+else
+exit
+fi
+fi
+
 title "Installing rbenv" && echo
 sudo rm -rf ~/.rbenv
 
 notify "Cloning rbenv" && echo
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/Digital-Clouds/rbenv.git ~/.rbenv
 source ~/.bashrc
 
 notify "Cloning ruby-build" && echo
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+git clone https://github.com/Digital-Clouds/ruby-build.git ~/.rbenv/plugins/ruby-build
 source ~/.bashrc
 
 notify "Installing Ruby" && echo
@@ -20,6 +29,11 @@ rbenv global ${versionRuby}
 notify "Gem installing tools" && echo
 gem install bundler rdoc rails mixlib-cli dapp
 
-breakLine
+ rbenv rehash
 
-exec "$SHELL"
+notify "To verify that rbenv is properly set up, running rbenv doctor" && echo
+sleep 2
+
+./rbenv-docktor.sh
+
+breakLine
