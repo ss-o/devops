@@ -1,7 +1,16 @@
    sudo apt-get install -y apt-utils \
         git \
         build-essential \
-        gvfs-bin \
+        gvfs-bin \ 
+        dbm \
+        gdbm \
+        bz2 \
+        hashlib \
+        lzma \
+        tkinter \
+        elementtree \
+        uuid \
+        sqlite3 \
         cmake \
         make \
         gcc \
@@ -28,12 +37,16 @@
         apt-transport-https \
         dialog \
         libc6 \
+        libssl-dev
         libgcc1 \
         libgssapi-krb5-2 \
         libicu[0-9][0-9] \
         liblttng-ust0 \
         libstdc++6 \
-        zlib1g \
+        zlib1g-dev \
+        libghc-zlib-dev \
+        libzlcore-dev \
+        zlibc \
         locales \
         sudo \
         ncdu \
