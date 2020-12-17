@@ -38,7 +38,10 @@ title "Installing Pyenv"
 notify "Cloning to ~/.pyenv" && echo
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
-_source_bashrc
+#_source_bashrc
+cd ${HOME}
+source .bashrc
+cd - >/dev/null 2>&1
 
 notify "Installing Python-${versionPython}" && echo
 pyenv rehash
