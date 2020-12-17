@@ -43,11 +43,12 @@ pyenv rehash
 pyenv install ${versionPython}
 pyenv global ${versionPython}
 
-
 if ! type -P python &>/dev/null; then
+    set +e
     python="$(command -v python 2>/dev/null || :)"
     python2="$(command -v python2 2>/dev/null || :)"
     python3="$(command -v python3 2>/dev/null || :)"
+    set -e
     if [ -z "$python" ]; then
         if [ -n "$python3" ]; then
             python="$python3"
@@ -77,7 +78,6 @@ if ! type -P pip; then
         sudo easy_install pip || :
     fi
 fi
-
 
 notify "Installing Tools using PIP" && echo
 pip install --upgrade pip wheel setuptools
