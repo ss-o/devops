@@ -4,9 +4,7 @@
 # ============================================================================= #
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
-
 curr_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source ${curr_dir}/colors.sh
 
 # ============================================================================= #
 #  ➜ ➜ ➜ REQUIRED VERSIONS
@@ -52,39 +50,6 @@ notify() {
     printf "\033[1;46m %s \033[0m" "$1"
 }
 
-### Ask some information
-_prompt_info() {
-    LENTH=${*}
-    COUNT=${#LENTH}
-    echo -ne "${BCyan}\n==> ${On_White}${1} ${White}${2}"
-    echo -ne "${BCyan}\n==> "
-    for ((CHAR = 1; CHAR <= COUNT; CHAR++)); do echo -ne "-"; done
-    echo -ne "\n==> ${NC}"
-}
-
-_confirm_prompt() {
-    local str_input=
-    local str_yn="[Y/n]> "
-    for arg in "$@"; do
-        case ${arg} in
-        --yes | -y | -Y) shift ;;
-        --no | -n | -N)
-            str_yn="[y/N]> "
-            shift
-            ;;
-        esac
-    done
-    printf "${BCyan}$1 ${On_White}${str_yn}${NC}"
-    read -r str_input
-    str_input="${str_input,,}"
-    if [[ ${str_input} =~ ^(yes|y)$ ]] ||
-        ([[ ! ${str_input} =~ ^(no|n)$ ]] && [[ "${str_yn}" == "[Y/n]> " ]]); then
-        return 0
-    else
-        return 1
-    fi
-}
-
 ### Prints a block of indented text.
 #   $1=[string] - text to print
 #   $2=[int] - indent length (default=4)
@@ -103,9 +68,16 @@ printb() {
     done
 }
 
-# Download with wget
+### Check command status and exit on error
+_check() {
+    "${@}"
+    local STATUS=$?
+    if [[ ${STATUS} -ne 0 ]]; then _error "${@}"; fi
+    return "${STATUS}"
+}
+
+### Download show progress bar only
 _wget() {
-    notify "Downloadin ----> $1"
     wget "${1}" --quiet --show-progress
 }
 
@@ -168,32 +140,30 @@ else
     distroname="Unknown"
 fi
 
-# Determine the buildarch value
 for currarch in "${arch[@]}"; do
     case "$currarch" in
-    any)
-        buildarch=1
-        break
-        ;;
-    armv5)
-        buildarch=$((buildarch + 2))
-        ;;
-    armv7h)
-        buildarch=$((buildarch + 4))
-        ;;
-    aarch64)
-        buildarch=$((buildarch + 8))
-        ;;
-    armv6h)
-        buildarch=$((buildarch + 16))
-        ;;
-    i686)
-        buildarch=$((buildarch + 64))
-        ;;
-    x86_64)
-        buildarch=$((buildarch + 128))
-        ;;
+    any) ;;
+
+    \
+        armv5) ;;
+
+    \
+        armv7h) ;;
+
+    \
+        aarch64) ;;
+
+    \
+        armv6h) ;;
+
+    \
+        i686) ;;
+
+    \
+        x86_64) ;;
+
     esac
+
 done
 
 ## System information

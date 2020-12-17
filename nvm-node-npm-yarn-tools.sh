@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# ============================================================================= #
+#  ➜ ➜ ➜ SETUP GO
+# ============================================================================= #
+set -euo pipefail
+[ -n "${DEBUG:-}" ] && set -x
+
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/utils.sh"
 
@@ -24,20 +30,27 @@ notify "Installing Npm" && echo
 nvm install-latest-npm
 
 notify "Installing Yarn" && echo
-npm install -g yarn
+npm install -g gulp yarn --unsafe-perm
+
+notify "Setting python binding"
+npm config set python $(which python)
 
 source ~/.bashrc
 
 notify "Installing Npm tools" && echo
 npm install -g typescript
 npm install -g markdown-it
+npm install -g tldr
+npm install -g nb.sh
+
+sudo "$(which nb)" completions install
 
 notify "Installing Yarn tools" && echo
-yarn global add bash-language-server
 yarn global add heroku
 yarn global add jshint
 yarn global add prettier
 yarn global add typescript-language-server
+yarn global add bash-language-server
 yarn global add webpack
 
 breakLine
