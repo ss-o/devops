@@ -40,6 +40,6 @@ rbenv rehash
 notify "To verify that rbenv is properly set up, running rbenv doctor" && echo
 sleep 2
 
-./rbenv-docktor.sh
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
 breakLine

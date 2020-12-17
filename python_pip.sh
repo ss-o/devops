@@ -12,15 +12,26 @@ source "${CDIR}/lib/utils.sh"
 [[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
 
 if _cmd_ apt; then
-    sudo apt install -y build-essential \
-        python3-dev python3-pip python3-setuptools \
-        python3-venv zlib1g-dev libssl-dev libffi-dev \
-        libncurses5-dev libgdbm-dev libnss3-dev \
-        libssl-dev libreadline-dev libffi-dev curl
+    sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+        libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+        libncurses5-dev libncursesw5-dev xz-utils tk-dev
 fi
 if _cmd_ pacman; then
-    sudo pacman -S cmake gcc python python-virtualenv python-pip python-setuptools --noconfirm
+    sudo pacman -S base base-devel --noconfirm
 fi
+if _cmd_ yum; then
+    sudo yum -y groupinstall "Development Tools"
+    sudo yum -y install gcc openssl-devel bzip2-devel libffi-devel
+fi
+
+_wget "https://www.python.org/ftp/python/${versionPython}/Python-${versionPython}.tgz" && tar xvf Python-${versionPython}.tgz
+cd Python-${versionPython}
+./configure --enable-optimizations --with-ensurepip=install
+make -j 4
+sudo make altinstall
+cd - >/dev/null 2>&1
+
+sudo rm -r "Python-${versionPython}.tgz" "Python-${versionPython}"
 
 if ! type -P python &>/dev/null; then
     set +e
