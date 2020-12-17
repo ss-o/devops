@@ -51,9 +51,11 @@ notify() {
 }
 
 _source_bashrc() {
+    set +e
     cd ${HOME}
     source .bashrc
     cd - >/dev/null 2>&1
+    set -e
 }
 ### Prints a block of indented text.
 #   $1=[string] - text to print
