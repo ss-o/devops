@@ -38,48 +38,12 @@ title "Installing Pyenv"
 notify "Cloning to ~/.pyenv" && echo
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
+_source_bashrc
+
 notify "Installing Python-${versionPython}" && echo
 pyenv rehash
 pyenv install ${versionPython}
 pyenv global ${versionPython}
-
-if ! type -P python &>/dev/null; then
-    set +e
-    python="$(command -v python 2>/dev/null || :)"
-    python2="$(command -v python2 2>/dev/null || :)"
-    python3="$(command -v python3 2>/dev/null || :)"
-    set -e
-    if [ -z "$python" ]; then
-        if [ -n "$python3" ]; then
-            python="$python3"
-        elif [ -n "$python2" ]; then
-            python="$python2"
-        else
-            echo "ERROR: 'command -v python' failed to find python" >&2
-            exit 1
-        fi
-    fi
-fi
-
-notify "Installig PIP" && echo
-
-if ! type -P pip; then
-    set +e
-    pip2="$(type -P pip2 2>/dev/null)"
-    pip3="$(type -P pip3 2>/dev/null)"
-    set -e
-    if [ -f /usr/local/bin/pip ]; then
-        echo "/usr/local/bin/pip already exists, not symlinking - check your \$PATH includes /usr/local/bin (\$PATH = $PATH)"
-    elif [ -f "$HOME/.local/bin/pip" ]; then
-        echo "/usr/local/bin/pip already exists, not symlinking - check your \$PATH includes $HOME/.local/bin/pip (\$PATH = $PATH)"
-    elif [ -n "$pip3" ]; then
-        sudo ln -sv "$pip3" /usr/local/bin/pip
-    elif [ -n "$pip2" ]; then
-        sudo ln -sv "$pip2" /usr/local/bin/pip
-    else
-        sudo easy_install pip || :
-    fi
-fi
 
 notify "Installing Tools using PIP" && echo
 pip install --upgrade pip wheel setuptools
