@@ -11,6 +11,12 @@ source "${CDIR}/lib/utils.sh"
 [[ ! -d "$HOME/.local" ]] && mkdir -p "$HOME/.local"
 [[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
 
+install_pip_manually() {
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python ${PWD}/get-pip.py --user
+    rm -fr get-pip.py
+}
+
 if _cmd_ apt; then
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
         libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
@@ -30,13 +36,17 @@ title "Installing Pyenv"
 [[ -d "$HOME/.pyenv" ]] && sudo rm -r "$HOME/.pyenv"
 mkdir -p ~/.pyenv
 
-notify "Cloning to ~/.pyenv"
+notify "Cloning to ~/.pyenv" && echo
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 _source_bashrc
 
-notify "Installing Python-${versionPython}"
+notify "Installing Python-${versionPython}" && echo
+pyenv rehash
 pyenv install ${versionPython}
+pyenv global ${versionPython}
+
+notify "Installig PIP" && echo
 
 if ! type -P pip; then
     set +e
@@ -54,41 +64,34 @@ if ! type -P pip; then
     fi
 fi
 
-notify "Installing PIP" && echo
-
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python ${PWD}/get-pip.py --user
-
 notify "Installing Tools using PIP" && echo
-pip install --user --upgrade pip wheel setuptools
-pip install --user autopep8
-pip install --user black
-pip install --user cheat
-pip install --user django
-pip install --user faker
-pip install --user flake8
-pip install --user httpie
-pip install --user importmagic
-pip install --user jupyter
-pip install --user litecli
-pip install --user matplotlib
-pip install --user pandas
-pip install --user pipenv
-pip install --user poetry
-pip install --user progressbar2
-pip install --user psycopg2-binary
-pip install --user py-spy
-pip install --user pydoc_utils
-pip install --user pyflakes
-pip install --user pylint
-pip install --user python-language-server
-pip install --user pygments
-pip install --user virtualenv
-pip install --user virtualenvwrapper
-pip install --user yapf
-pip install --user thefuck
-
-rm -fr get-pip.py
+pip install --upgrade pip wheel setuptools
+pip install autopep8
+pip install black
+pip install cheat
+pip install django
+pip install faker
+pip install flake8
+pip install httpie
+pip install importmagic
+pip install jupyter
+pip install litecli
+pip install matplotlib
+pip install pandas
+#pip install --user pipenv
+pip install poetry
+pip install progressbar2
+pip install psycopg2-binary
+pip install py-spy
+pip install pydoc_utils
+pip install pyflakes
+pip install pylint
+pip install python-language-server
+pip install pygments
+pip install virtualenv
+pip install virtualenvwrapper
+pip install yapf
+pip install thefuck
 
 _source_bashrc
 

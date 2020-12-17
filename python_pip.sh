@@ -11,6 +11,12 @@ source "${CDIR}/lib/utils.sh"
 [[ ! -d "$HOME/.local" ]] && mkdir -p "$HOME/.local"
 [[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
 
+install_pip_manually() {
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python ${PWD}/get-pip.py --user
+    rm -fr get-pip.py
+}
+
 if _cmd_ apt; then
     sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
         libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
@@ -47,6 +53,8 @@ if ! type -P python &>/dev/null; then
     fi
 fi
 
+
+
 if ! type -P pip; then
     set +e
     pip2="$(type -P pip2 2>/dev/null)"
@@ -62,11 +70,6 @@ if ! type -P pip; then
         sudo easy_install pip || :
     fi
 fi
-
-notify "Installing PIP" && echo
-
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python ${PWD}/get-pip.py --user
 
 notify "Installing Tools using PIP" && echo
 pip install --user --upgrade pip wheel setuptools
@@ -96,8 +99,6 @@ pip install --user virtualenv
 pip install --user virtualenvwrapper
 pip install --user yapf
 pip install --user thefuck
-
-rm -fr get-pip.py
 
 _source_bashrc
 
