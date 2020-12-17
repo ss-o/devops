@@ -17,7 +17,7 @@ if _cmd_ apt; then
         libncurses5-dev libncursesw5-dev xz-utils tk-dev
 fi
 if _cmd_ pacman; then
-    sudo pacman -S base base-devel --noconfirm
+    sudo pacman -S base base-devel --noconfirm --needed
 fi
 if _cmd_ yum; then
     sudo yum -y groupinstall "Development Tools"
