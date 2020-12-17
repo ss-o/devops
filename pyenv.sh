@@ -10,6 +10,8 @@ source "${CDIR}/lib/utils.sh"
 
 [[ ! -d "$HOME/.local" ]] && mkdir -p "$HOME/.local"
 [[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
+[[ -d "$HOME/.pyenv" ]] && sudo rm -r "$HOME/.pyenv"
+mkdir -p ~/.pyenv
 
 install_pip_manually() {
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -32,9 +34,6 @@ if _cmd_ yum; then
 fi
 
 title "Installing Pyenv"
-
-[[ -d "$HOME/.pyenv" ]] && sudo rm -r "$HOME/.pyenv"
-mkdir -p ~/.pyenv
 
 notify "Cloning to ~/.pyenv" && echo
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
