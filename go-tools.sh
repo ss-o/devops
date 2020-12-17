@@ -8,7 +8,7 @@ set -euo pipefail
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/lib/utils.sh"
 
-title "Installing GoLang ${versionGo}"
+title "Installing Go ${versionGo}"
 
 case $versionArch in
 x86_64)
@@ -29,8 +29,7 @@ fi
 sudo mv go /usr/local
 rm go.tar.gz -f
 
-# shellcheck source=/dev/null
-source ~/.bashrc
+_source_bashrc
 
 notify "Installing Go tools"
 echo

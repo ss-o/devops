@@ -6,7 +6,7 @@ set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/utils.sh"
+source "${CDIR}/lib/utils.sh"
 
 title "Installing Google Cloud SDK"
 

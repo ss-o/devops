@@ -70,6 +70,8 @@ if ! type -P pip; then
     set -e
     if [ -f /usr/local/bin/pip ]; then
         echo "/usr/local/bin/pip already exists, not symlinking - check your \$PATH includes /usr/local/bin (\$PATH = $PATH)"
+    elif [ -f "$HOME/.local/bin/pip" ]; then
+        echo "/usr/local/bin/pip already exists, not symlinking - check your \$PATH includes $HOME/.local/bin/pip (\$PATH = $PATH)"
     elif [ -n "$pip3" ]; then
         sudo ln -sv "$pip3" /usr/local/bin/pip
     elif [ -n "$pip2" ]; then
