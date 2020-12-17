@@ -47,5 +47,6 @@ cd "${GOPATH}/src/github.com/magefile/mage"
 go run bootstrap.go
 cd "${CDIR}"
 
-exec "$SHELL"
+_source_bashrc
+
 breakLine

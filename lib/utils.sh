@@ -50,6 +50,11 @@ notify() {
     printf "\033[1;46m %s \033[0m" "$1"
 }
 
+_source_bashrc() {
+    cd ${HOME}
+    source .bashrc
+    cd - >/dev/null 2>&1
+}
 ### Prints a block of indented text.
 #   $1=[string] - text to print
 #   $2=[int] - indent length (default=4)

@@ -13,7 +13,7 @@ source "${CDIR}/lib/utils.sh"
 
 if _cmd_ apt; then
     sudo apt install -y build-essential \
-        python3-dev python3-pip \
+        python3-dev python3-pip python3-setuptools \
         python3-venv zlib1g-dev libssl-dev libffi-dev \
         libncurses5-dev libgdbm-dev libnss3-dev \
         libssl-dev libreadline-dev libffi-dev curl
@@ -87,6 +87,8 @@ pip install --user yapf
 pip install --user thefuck
 
 rm -fr get-pip.py
+
+_source_bashrc
 
 #pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
 

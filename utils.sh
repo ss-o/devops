@@ -52,39 +52,11 @@ notify() {
     printf "\033[1;46m %s \033[0m" "$1"
 }
 
-### Ask some information
-_prompt_info() {
-    LENTH=${*}
-    COUNT=${#LENTH}
-    echo -ne "${BCyan}\n==> ${On_White}${1} ${White}${2}"
-    echo -ne "${BCyan}\n==> "
-    for ((CHAR = 1; CHAR <= COUNT; CHAR++)); do echo -ne "-"; done
-    echo -ne "\n==> ${NC}"
+_source_bashrc() {
+    cd ${HOME}
+    source .bashrc
+    cd - >/dev/null 2>&1
 }
-
-_confirm_prompt() {
-    local str_input=
-    local str_yn="[Y/n]> "
-    for arg in "$@"; do
-        case ${arg} in
-        --yes | -y | -Y) shift ;;
-        --no | -n | -N)
-            str_yn="[y/N]> "
-            shift
-            ;;
-        esac
-    done
-    printf "${BCyan}$1 ${On_White}${str_yn}${NC}"
-    read -r str_input
-    str_input="${str_input,,}"
-    if [[ ${str_input} =~ ^(yes|y)$ ]] ||
-        ([[ ! ${str_input} =~ ^(no|n)$ ]] && [[ "${str_yn}" == "[Y/n]> " ]]); then
-        return 0
-    else
-        return 1
-    fi
-}
-
 ### Prints a block of indented text.
 #   $1=[string] - text to print
 #   $2=[int] - indent length (default=4)
