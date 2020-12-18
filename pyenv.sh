@@ -45,8 +45,9 @@ pyenv rehash
 pyenv install ${versionPython}
 pyenv global ${versionPython}
 
+_source_bashrc
+
 notify "Installing Tools using PIP" && echo
-pip install --user pip wheel setuptools
 pip install --user --upgrade pip wheel setuptools
 pip install --user autopep8
 pip install --user black
@@ -64,7 +65,6 @@ pip install --user pipenv
 pip install --user poetry
 pip install --user progressbar2
 pip install --user psycopg2-binary
-pip install --user py-spy
 pip install --user pydoc_utils
 pip install --user pyflakes
 pip install --user pylint
