@@ -47,6 +47,10 @@ pyenv rehash
 
 _source_bashrc
 
+notify "Installing Pyenv doctor"
+git clone https://github.com/pyenv/pyenv-doctor.git "$(pyenv root)/plugins/pyenv-doctor"
+pyenv doctor
+
 notify "Installing Tools using PIP" && echo
 pip install --upgrade pip wheel setuptools
 pip install autopep8
