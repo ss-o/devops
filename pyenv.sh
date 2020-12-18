@@ -15,7 +15,7 @@ mkdir -p ~/.pyenv
 
 install_pip_manually() {
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    python ${PWD}/get-pip.py
+    python ${PWD}/get-pip.py --user
     rm -fr get-pip.py
 }
 
@@ -46,9 +46,6 @@ pyenv global ${versionPython}
 pyenv rehash
 
 _source_bashrc
-
-notify "Installing PIP" && echo
-install_pip_manually
 
 notify "Installing Tools using PIP" && echo
 pip install --user --upgrade pip wheel setuptools
