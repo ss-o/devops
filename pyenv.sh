@@ -64,7 +64,6 @@ pip install pandas
 pip install pipenv
 pip install poetry
 pip install progressbar2
-pip install psycopg2-binary
 pip install pydoc_utils
 pip install pyflakes
 pip install pylint
