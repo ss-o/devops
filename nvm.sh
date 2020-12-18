@@ -24,9 +24,7 @@ _source_bashrc
 
 notify "Installing Node" && echo
 nvm install v${versionNode}
-nvm global v${versionNode}
 nvm use v${versionNode}
-
 
 notify "Installing Npm" && echo
 nvm install-latest-npm
