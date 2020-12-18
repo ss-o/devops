@@ -74,7 +74,7 @@ pip install virtualenvwrapper
 pip install yapf
 pip install thefuck
 
-exec "$SHELL"
+_source_bashrc
 
 #pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
 
