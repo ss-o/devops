@@ -32,7 +32,7 @@ nvm install-latest-npm
 notify "Installing Yarn" && echo
 npm install -g gulp yarn --unsafe-perm
 
-notify "Setting python binding"
+notify "Setting python binding" && echo
 npm config set python $(which python)
 
 notify "Installing Npm tools" && echo
