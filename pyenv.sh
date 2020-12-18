@@ -46,33 +46,34 @@ pyenv install ${versionPython}
 pyenv global ${versionPython}
 
 notify "Installing Tools using PIP" && echo
-pip install --upgrade pip wheel setuptools
-pip install autopep8
-pip install black
-pip install cheat
-pip install django
-pip install faker
-pip install flake8
-pip install httpie
-pip install importmagic
-pip install jupyter
-pip install litecli
-pip install matplotlib
-pip install pandas
-#pip install --user pipenv
-pip install poetry
-pip install progressbar2
-pip install psycopg2-binary
-pip install py-spy
-pip install pydoc_utils
-pip install pyflakes
-pip install pylint
-pip install python-language-server
-pip install pygments
-pip install virtualenv
-pip install virtualenvwrapper
-pip install yapf
-pip install thefuck
+pip install --user pip wheel setuptools
+pip install --user --upgrade pip wheel setuptools
+pip install --user autopep8
+pip install --user black
+pip install --user cheat
+pip install --user django
+pip install --user faker
+pip install --user flake8
+pip install --user httpie
+pip install --user importmagic
+pip install --user jupyter
+pip install --user litecli
+pip install --user matplotlib
+pip install --user pandas
+pip install --user pipenv
+pip install --user poetry
+pip install --user progressbar2
+pip install --user psycopg2-binary
+pip install --user py-spy
+pip install --user pydoc_utils
+pip install --user pyflakes
+pip install --user pylint
+pip install --user python-language-server
+pip install --user pygments
+pip install --user virtualenv
+pip install --user virtualenvwrapper
+pip install --user yapf
+pip install --user thefuck
 
 _source_bashrc
 
