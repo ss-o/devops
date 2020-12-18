@@ -9,7 +9,7 @@ CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/lib/utils.sh"
 
 if _cmd_ rbenv; then
-    notify "rbenv already install installed, wnat to reinstall?" && echo
+    notify "rbenv already install installed, want to reinstall?" && echo
     if _confirm; then
         return
     else
