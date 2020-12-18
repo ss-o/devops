@@ -41,11 +41,14 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 _source_bashrc
 
 notify "Installing Python-${versionPython}" && echo
-pyenv rehash
 pyenv install ${versionPython}
 pyenv global ${versionPython}
+pyenv rehash
 
 _source_bashrc
+
+notify "Installing PIP" && echo
+install_pip_manually
 
 notify "Installing Tools using PIP" && echo
 pip install --user --upgrade pip wheel setuptools

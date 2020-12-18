@@ -31,11 +31,11 @@ _source_bashrc
 notify "Installing Ruby" && echo
 rbenv install ${versionRuby} #Installing required version of Ruby
 rbenv global ${versionRuby}
+rbenv use ${versionRuby}
+rbenv rehash
 
 notify "Gem installing tools" && echo
 gem install bundler rdoc rails mixlib-cli dapp
-
-rbenv rehash
 
 notify "To verify that rbenv is properly set up, running rbenv doctor" && echo
 sleep 2
