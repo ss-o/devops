@@ -26,7 +26,6 @@ if _cmd_ rbenv; then
         notify "Installing Ruby" && echo
         rbenv install ${versionRuby} #Installing required version of Ruby
         rbenv global ${versionRuby}
-        rbenv use ${versionRuby}
         rbenv rehash
 
         notify "Gem installing tools" && echo
