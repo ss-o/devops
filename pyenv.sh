@@ -20,8 +20,8 @@ install_pip_manually() {
 }
 
 if _cmd_ apt; then
-    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-        libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libxml2-dev \
+        libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev libxmlsec1-dev \
         xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 fi
 if _cmd_ pacman; then
@@ -43,7 +43,6 @@ _source_bashrc
 notify "Installing Python-${versionPython}" && echo
 pyenv install ${versionPython}
 pyenv global ${versionPython}
-pyenv install pypy${versionPypy3}
 pyenv rehash
 
 _source_bashrc
