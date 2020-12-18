@@ -9,7 +9,7 @@ CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/lib/utils.sh"
 
 [[ ! -d "$HOME/.local" ]] && mkdir -p "$HOME/.local"
-[[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
+#[[ ! -d "/usr/local/bin" ]] && mkdir -p "/usr/local/bin"
 [[ -d "$HOME/.pyenv" ]] && sudo rm -r "$HOME/.pyenv"
 mkdir -p ~/.pyenv
 
