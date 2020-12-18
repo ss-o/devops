@@ -15,7 +15,7 @@ mkdir -p ~/.pyenv
 
 install_pip_manually() {
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    python ${PWD}/get-pip.py --user
+    python ${PWD}/get-pip.py
     rm -fr get-pip.py
 }
 
