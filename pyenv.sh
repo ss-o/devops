@@ -43,6 +43,7 @@ _source_bashrc
 notify "Installing Python-${versionPython}" && echo
 pyenv install ${versionPython}
 pyenv global ${versionPython}
+pyenv install pypy${versionPypy3}
 pyenv rehash
 
 _source_bashrc
