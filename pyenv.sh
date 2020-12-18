@@ -49,7 +49,7 @@ pyenv rehash
 _source_bashrc
 
 notify "Installing Tools using PIP" && echo
-pip install --user --upgrade pip wheel setuptools
+pip install --upgrade pip wheel setuptools
 pip install --user autopep8
 pip install --user black
 pip install --user cheat
