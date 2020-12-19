@@ -5,13 +5,13 @@
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
-CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/lib/utilities.sh"
-
 # ============================================================================= #
 #  ➜ ➜ ➜ TRAP
 # ============================================================================= #
 trap '' SIGINT SIGQUIT SIGTSTP
+
+CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${CDIR}/lib/utilities.sh"
 
 build_pyenv() {
 
