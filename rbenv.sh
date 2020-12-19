@@ -17,7 +17,7 @@ rbenv_build() {
 
     if _cmd_ apt; then
         apt-get-update-if-needed
-        list="cmake make curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev"
+        list="cmake make curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev"
         if ! _exec_ in $list; then
             sudo apt-get install -y ${list}
         fi
