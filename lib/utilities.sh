@@ -21,7 +21,7 @@ source "${curr_dir}/os.sh"
 # ============================================================================= #
 _cmd_() { command -v "$1" >/dev/null 2>&1; }
 _apt_() {
-    if [ echo "$(dpkg -s "$1" | grep Status:)" != "Status: install ok installed" ]; then
+    if [ "echo $(dpkg -s "$1" | grep Status:)" != "Status: install ok installed" ]; then
         sudo apt-get install -y "$1"
     fi
 }
