@@ -15,6 +15,10 @@ trap '' SIGINT SIGQUIT SIGTSTP
 
 rbenv_build() {
 
+    if _cmd_ apt; then
+        apt-get-update-if-needed
+        install-if-required-apt "cmake make curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev"
+    fi
     if _cmd_ rbenv; then
         notify "rbenv already install installed, want to reinstall?" && echo
         if _confirm; then

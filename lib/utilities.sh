@@ -121,3 +121,9 @@ apt-get-update-if-needed() {
         echo "Skipping apt-get update."
     fi
 }
+
+install-if-required-apt() {
+    list="$1"
+    if ! _exec_ in $list; then
+    sudo apt-get install -v ${list}
+}
