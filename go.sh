@@ -13,10 +13,10 @@ source "${CDIR}/lib/utilities.sh"
 # ============================================================================= #
 trap '' SIGINT SIGQUIT SIGTSTP
 
-printb "$versionArch"
-printb "$distroname"
-sleep 1
 title "Installing Go ${versionGo}"
+
+printSubhead "$distroname $versionDeb $versionArch"
+sleep 1
 
 build_go() {
 
