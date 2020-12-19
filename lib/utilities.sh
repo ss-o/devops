@@ -32,7 +32,7 @@ title() {
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' ' '
     printf '%-*s\n' "${COLUMNS:-$(tput cols)}" "  # $1" | tr ' ' ' '
     printf '%*s' "${COLUMNS:-$(tput cols)}" '' | tr ' ' ' '
-    printf "${NCS}"
+    printf "${NC}"
     printf "\n"
 }
 
