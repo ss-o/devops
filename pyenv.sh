@@ -86,6 +86,7 @@ build_pyenv() {
     _reload_bashrc
 
     breakLine
+    exit 0
 }
 while true; do
     build_pyenv

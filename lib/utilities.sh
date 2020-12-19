@@ -122,6 +122,53 @@ apt-get-update-if-needed() {
     fi
 }
 
+install-deps-apt() {
+
+    apt-get-update-if-needed
+
+    sudo apt-get install -y apt-utils \
+        git \
+        build-essential \
+        gvfs-bin \
+        cmake \
+        make \
+        gcc \
+        g++ \
+        openssh-client \
+        gnupg2 \
+        iproute2 \
+        procps \
+        lsof \
+        htop \
+        net-tools \
+        psmisc \
+        curl \
+        wget \
+        rsync \
+        ca-certificates \
+        unzip \
+        zip \
+        nano \
+        vim-tiny \
+        less \
+        jq \
+        lsb-release \
+        apt-transport-https \
+        dialog \
+        libc6 \
+        libgcc1 \
+        libgssapi-krb5-2 \
+        libicu[0-9][0-9] \
+        liblttng-ust0 \
+        libstdc++6 \
+        zlib1g \
+        locales \
+        sudo \
+        ncdu \
+        man-db \
+        strace"
+}
+
 _apt_() {
     if [ "echo $(dpkg -s "$1" | grep Status:)" != "Status: install ok installed" ]; then
         sudo apt-get install -y "$1"

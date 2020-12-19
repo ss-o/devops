@@ -58,6 +58,7 @@ rbenv_build() {
     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
     breakLine
+    exit 0
 }
 
 while true; do
