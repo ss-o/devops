@@ -125,5 +125,6 @@ apt-get-update-if-needed() {
 install-if-required-apt() {
     list="$1"
     if ! _exec_ in $list; then
-    sudo apt-get install -v ${list}
+        sudo apt-get install -v ${list}
+    fi
 }
