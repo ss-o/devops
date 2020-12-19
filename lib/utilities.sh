@@ -127,14 +127,14 @@ install-deps-apt() {
     apt-get-update-if-needed
 
     sudo apt-get install -y apt-utils \
-    profile-sync-daemon git build-essential \
-    gvfs-bin cmake make gcc g++ openssh-client gnupg2 \
-    iproute2 procps lsof htop net-tools psmisc \
-    curl wget rsync ca-certificates unzip zip nano vim-tiny \
-    less jq lsb-release apt-transport-https dialog \
-    libc6 libgcc1 libgssapi-krb5-2 libicu[0-9][0-9] \
-    liblttng-ust0 libstdc++6 \
-    zlib1g locales sudo ncdu man-db strace
+        profile-sync-daemon git build-essential \
+        gvfs-bin cmake make gcc g++ openssh-client gnupg2 \
+        iproute2 procps lsof htop net-tools psmisc \
+        curl wget rsync ca-certificates unzip zip nano vim-tiny \
+        less jq lsb-release apt-transport-https dialog \
+        libc6 libgcc1 libgssapi-krb5-2 libicu[0-9][0-9] \
+        liblttng-ust0 libstdc++6 \
+        zlib1g locales sudo ncdu man-db strace
 }
 
 _apt_() {
@@ -146,12 +146,13 @@ _apt_() {
 install-deps-pacman() {
     sudo pacman -Syy
     sudo pacman -S base base-devel unrar hugo ethtool \
-    debootstrap devscripts oath-toolkit imagemagick profile-sync-daemon \
-    pkgfile dconf-editor rsync debian-archive-keyring \
-    nmap htop gvfs p7zip lzop arch-install-scripts curl \
-    llvm llvm-libs lldb tree shellcheck bash-completion \
-    cmatrix mlocate pacman-contrib x11-ssh-askpass \
-    sshfs packer lsof mkcert --noconfirm
+        debootstrap devscripts oath-toolkit imagemagick profile-sync-daemon \
+        pkgfile dconf-editor rsync debian-archive-keyring \
+        nmap htop gvfs p7zip lzop arch-install-scripts curl \
+        llvm llvm-libs lldb tree shellcheck bash-completion \
+        cmatrix mlocate pacman-contrib x11-ssh-askpass \
+        sshfs packer lsof mkcert --noconfirm
+}
 _pacman_() {
     if pacman -Qi "$1" &>/dev/null; then
         sudo pacman -S "$1" --noconfirm --needed
