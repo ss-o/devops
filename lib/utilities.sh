@@ -28,11 +28,11 @@ _date() { date "+%d-%m-%Y"; }
 _time() { date "+%H-%M-%S"; }
 
 title() {
-    printf "${On_Blue}"
+    printf "${On_LGreen}"
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' ' '
     printf '%-*s\n' "${COLUMNS:-$(tput cols)}" "  # $1" | tr ' ' ' '
     printf '%*s' "${COLUMNS:-$(tput cols)}" '' | tr ' ' ' '
-    printf "${BBlack}"
+    printf "${NCS}"
     printf "\n"
 }
 
@@ -73,8 +73,7 @@ draw_cc() {
 
 notify() {
     printf "\n"
-    printf "${On_Red} %s ${BWhite}" "$1"
-    printf "\n"
+    printf "${On_Cyan} %s ${NC}\n" "$1"
 }
 
 ### Download show progress bar only
