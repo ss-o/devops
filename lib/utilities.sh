@@ -2,6 +2,12 @@
 # ============================================================================= #
 #  ➜ ➜ ➜ SS-O UTILITIES
 # ============================================================================= #
+curr_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${curr_dir}/colors.sh"
+source "${curr_dir}/visual.sh"
+source "${curr_dir}/versions.sh"
+source "${curr_dir}/os.sh"
+
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
@@ -10,11 +16,6 @@ if [[ "$EUID" -eq 0 ]]; then
     printf "\033[1;101mPlease do not run this script as root (no su or sudo)! \033[0m \n"
     exit
 fi
-
-curr_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${curr_dir}/colors.sh"
-source "${curr_dir}/versions.sh"
-source "${curr_dir}/os.sh"
 
 # ============================================================================= #
 #  ➜ ➜ ➜ FUNCTIONS & UTILITIES
@@ -126,7 +127,7 @@ install-deps-apt() {
 
     apt-get-update-if-needed
 
-    sudo apt-get install -y apt-utils \
+    sudo apt-get install -y apt-utils aptitude \
         profile-sync-daemon git build-essential \
         gvfs-bin cmake make gcc g++ openssh-client gnupg2 \
         iproute2 procps lsof htop net-tools psmisc \
@@ -138,7 +139,7 @@ install-deps-apt() {
 }
 
 _apt_() {
-    if [ "echo $(dpkg -s "$1" | grep Status:)" != "Status: install ok installed" ]; then
+    if dpkg -s "$1" &>/dev/null; then
         sudo apt-get install -y "$1"
     fi
 }
