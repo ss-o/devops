@@ -24,6 +24,8 @@ _exec_() { type -fP "$1" >/dev/null 2>&1; }
 _miss_dir() { [[ ! -d "$1" ]] && mkdir -p "$1"; }
 _execroot() { [[ "$(whoami)" != "root" ]] && exec sudo -- "$0" "$@"; }
 
+_reload_bashrc() { cd ${HOME} && source .bashrc && cd - >/dev/null 2>&1; }
+
 _date() { date "+%d-%m-%Y"; }
 _time() { date "+%H-%M-%S"; }
 
