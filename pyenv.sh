@@ -18,21 +18,25 @@ _miss_dir "${HOME}/.pyenv"
 
 build_pyenv() {
 
-    _install-deps() {
-        if _cmd_ apt; then
-            sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libxml2-dev \
+    if _cmd_ apt; then
+        list="build-essential libssl-dev zlib1g-dev libbz2-dev libxml2-dev \
                 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev libxmlsec1-dev \
-                xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
-        fi
-        if _cmd_ pacman; then
-            sudo pacman -S base-devel openssl zlib bzip2 readline sqlite curl \
-                llvm ncurses xz tk libffi python-pyopenssl git --noconfirm --needed
-        fi
-        if _cmd_ yum; then
-            sudo yum install @development zlib-devel bzip2 bzip2-devel readline-devel sqlite \
-                sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
-        fi
-    }
+                xz-utils tk-dev libffi-dev liblzma-dev python-openssl git"
+        for check in $list; do
+            _apt_ "${check}"
+        done
+    fi
+    if _cmd_ pacman; then
+        list="base-devel openssl zlib bzip2 readline sqlite curl \
+            llvm ncurses xz tk libffi python-pyopenssl git"
+        for check in $list; do
+            _pacman_ "${check}"
+        done
+    fi
+    if _cmd_ yum; then
+        sudo yum install @development zlib-devel bzip2 bzip2-devel readline-devel sqlite \
+            sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+    fi
 
     title "Installing Pyenv"
 

@@ -20,11 +20,6 @@ source "${curr_dir}/os.sh"
 #  ➜ ➜ ➜ FUNCTIONS & UTILITIES
 # ============================================================================= #
 _cmd_() { command -v "$1" >/dev/null 2>&1; }
-_apt_() {
-    if [ "echo $(dpkg -s "$1" | grep Status:)" != "Status: install ok installed" ]; then
-        sudo apt-get install -y "$1"
-    fi
-}
 _exec_() { type -fP "$1" >/dev/null 2>&1; }
 _miss_dir() { [[ ! -d "$1" ]] && mkdir -p "$1"; }
 _execroot() { [[ "$(whoami)" != "root" ]] && exec sudo -- "$0" "$@"; }
@@ -127,9 +122,14 @@ apt-get-update-if-needed() {
     fi
 }
 
-install-if-required-apt() {
-    list="$1"
-    if ! _exec_ in $list; then
-        sudo apt-get install -v ${list}
+_apt_() {
+    if [ "echo $(dpkg -s "$1" | grep Status:)" != "Status: install ok installed" ]; then
+        sudo apt-get install -y "$1"
     fi
 }
+
+_pacman_() {
+    if [ "pacman -Qi "$1" >/dev/null 2>&1" ]; then
+    sudo pacman -S "$1" --noconfirm --needed
+    fi
+     
