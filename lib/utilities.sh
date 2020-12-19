@@ -75,7 +75,7 @@ draw_cc() {
 
 notify() {
     printf "\n"
-    printf "${On_Cyan} %s ${NC}\n" "$1"
+    printf "${On_IRed} %s ${NC}\n" "$1"
 }
 
 ### Download show progress bar only

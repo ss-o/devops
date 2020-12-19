@@ -36,7 +36,7 @@ rbenv_build() {
     notify "Cloning ~/.rbenv/plugins/ruby-build" && echo
     git clone https://github.com/Digital-Clouds/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-    _Sreload_bashrc || echo "Failed reload bash"
+    _reload_bashrc || echo "Failed reload bash"
 
     notify "Installing Ruby ${versionRuby}" && echo
     rbenv install ${versionRuby} #Installing required version of Ruby
