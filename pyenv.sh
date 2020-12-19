@@ -54,12 +54,10 @@ build_pyenv() {
 
     _reload_bashrc
 
+    notify "Installing Tools using PIP" && echo
     python="${PYTHON:-python}"
     python="$(type -P "$python")"
-    $python -m pip install --upgrade pip
-
-    notify "Installing Tools using PIP" && echo
-    pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
+    $python -m pip install --upgrade pip setuptools wheel
     pip install autopep8
     pip install black
     pip install cheat
@@ -84,6 +82,7 @@ build_pyenv() {
     pip install virtualenvwrapper
     pip install yapf
     pip install thefuck
+    pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
 
     _reload_bashrc
 
