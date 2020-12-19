@@ -166,7 +166,7 @@ install-deps-apt() {
         sudo \
         ncdu \
         man-db \
-        strace"
+        strace
 }
 
 _apt_() {
@@ -176,7 +176,7 @@ _apt_() {
 }
 
 _pacman_() {
-    if [ "pacman -Qi "$1" >/dev/null 2>&1" ]; then
-    sudo pacman -S "$1" --noconfirm --needed
+    if pacman -Qi "$1" &>/dev/null; then
+        sudo pacman -S "$1" --noconfirm --needed
     fi
-     
+}
