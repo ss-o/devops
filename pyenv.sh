@@ -54,9 +54,9 @@ build_pyenv() {
 
     _reload_bashrc
 
-    notify "Installing Pyenv doctor"
-    git clone https://github.com/pyenv/pyenv-doctor.git "$(pyenv root)/plugins/pyenv-doctor"
-    pyenv doctor
+    python="${PYTHON:-python}"
+    python="$(type -P "$python")"
+    $python -m pip install --upgrade pip
 
     notify "Installing Tools using PIP" && echo
     pip list --user | cut -d" " -f 1 | tail -n +3 | xargs pip install -U --user
@@ -86,6 +86,10 @@ build_pyenv() {
     pip install thefuck
 
     _reload_bashrc
+
+    notify "Installing Pyenv doctor"
+    git clone https://github.com/pyenv/pyenv-doctor.git "$(pyenv root)/plugins/pyenv-doctor"
+    pyenv doctor
 
     breakLine
     exit 0
