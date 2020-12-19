@@ -85,7 +85,7 @@ _check() {
 }
 
 ### Download show progress bar only
-_wget() {
+wgetShowProgress() {
     wget "${1}" --quiet --show-progress
 }
 
