@@ -14,34 +14,41 @@ title "Installing NVM"
 mkdir -p ~/.nvm
 
 notify "Cloning NVM" && echo
+NVM_DIR="$HOME/.nvm"
+
 git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
 cd "$NVM_DIR"
 git checkout v${versionNvm}
 . "$NVM_DIR/nvm.sh"
 cd - >/dev/null 2>&1
 
+notify "Setting current owner as owner of ~/.nvm";
+chown ${USER:=$(/usr/bin/id -run)}:$USER -R ~/.nvm;
+
 _source_bashrc
 
-notify "Installing Node" && echo
+notify "Setting up NVM" && echo
 nvm install v${versionNode}
 nvm use v${versionNode}
+nvm alias default v${versionNode}
 
 notify "Installing Npm" && echo
 nvm install-latest-npm
 
-notify "Installing Yarn" && echo
-npm install -g gulp yarn --unsafe-perm
+notify "Installing Npm tools" && echo
+npm install -g typescript
+npm install -g markdown-it
+npm install -g npm
+npm install -g tldr
+npm install -g nb.sh
 
 notify "Setting python binding" && echo
 npm config set python $(which python)
 
-notify "Installing Npm tools" && echo
-npm install -g typescript
-npm install -g markdown-it
-npm install -g tldr
-npm install -g nb.sh
-
 sudo "$(which nb)" completions install
+
+notify "Installing Yarn" && echo
+npm install -g gulp yarn --unsafe-perm
 
 notify "Installing Yarn tools" && echo
 yarn global add heroku
