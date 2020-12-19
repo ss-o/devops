@@ -13,6 +13,8 @@ source "${CDIR}/lib/utilities.sh"
 # ============================================================================= #
 trap '' SIGINT SIGQUIT SIGTSTP
 
+printb "$distroname"
+
 title "Installing Go ${versionGo}"
 
 build_go() {
@@ -39,10 +41,10 @@ build_go() {
 
     notify "Installing Go tools"
     echo
-go get github.com/davecheney/httpstat
-go get github.com/joho/godotenv
-go get github.com/briandowns/spinner
-go get github.com/donutloop/toolkit/worker
+    go get github.com/davecheney/httpstat
+    go get github.com/joho/godotenv
+    go get github.com/briandowns/spinner
+    go get github.com/donutloop/toolkit/worker
     cd "${CDIR}"
 
     _reload_bashrc

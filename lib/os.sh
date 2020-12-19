@@ -5,28 +5,26 @@
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
-distro_name() {
-    if [ -f "/etc/os-release" ]; then
-        distroname=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
-    elif [ -f "/etc/debian_version" ]; then
-        distroname="debian"
-    elif [ -f "/etc/redhat-release" ]; then
-        distroname=redhat
-    elif [ -f "/etc/fedora-release" ]; then
-        distroname=fedora
-    elif [ -f "/etc/arch-release" ]; then
-        distroname=arch
-    elif [ -f "/etc/alpine-release" ]; then
-        distroname=alpine
-    else
-        distroname="Unknown"
-    fi
-}
+if [ -f "/etc/os-release" ]; then
+    distroname=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
+elif [ -f "/etc/debian_version" ]; then
+    distroname="debian"
+elif [ -f "/etc/redhat-release" ]; then
+    distroname=redhat
+elif [ -f "/etc/fedora-release" ]; then
+    distroname=fedora
+elif [ -f "/etc/arch-release" ]; then
+    distroname=arch
+elif [ -f "/etc/alpine-release" ]; then
+    distroname=alpine
+else
+    distroname="Unknown"
+fi
 
 do_curr_arch() {
-    versionArch="$(uname -m)"
+    do_arch="$(uname -m)"
 
-    case "$versionArch" in
+    case "$do_arch" in
     *)
         echo "Unknown"
         "$1"
@@ -58,5 +56,6 @@ do_curr_arch() {
     esac
 }
 
+versionArch="$(uname -m)"
 versionDeb="$(lsb_release -c -s)"
 versionKernel="$(uname -r)"
