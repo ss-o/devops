@@ -68,6 +68,7 @@ build_nvm() {
     _reload_bashrc
 
     breakLine
+    exit 0
 }
 while true; do
     build_nvm

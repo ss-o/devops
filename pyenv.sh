@@ -2,7 +2,7 @@
 # ============================================================================= #
 #  ➜ ➜ ➜ SETUP PYENV
 # ============================================================================= #
-set -euo pipefail
+#set -euo pipefaile
 [ -n "${DEBUG:-}" ] && set -x
 
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,10 +13,10 @@ source "${CDIR}/lib/utilities.sh"
 # ============================================================================= #
 trap '' SIGINT SIGQUIT SIGTSTP
 
-_miss_dir "${HOME}/.local"
-_miss_dir "${HOME}/.pyenv"
-
 build_pyenv() {
+
+    _miss_dir "${HOME}/.local"
+    _miss_dir "${HOME}/.pyenv"
 
     if _cmd_ apt; then
         list="build-essential libssl-dev zlib1g-dev libbz2-dev libxml2-dev \
@@ -50,7 +50,7 @@ build_pyenv() {
     pyenv global "${versionPython}"
     pyenv rehash
 
-    _source_bashrc
+    _reload_bashrc
 
     notify "Installing Pyenv doctor"
     git clone https://github.com/pyenv/pyenv-doctor.git "$(pyenv root)/plugins/pyenv-doctor"
