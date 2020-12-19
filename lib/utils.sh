@@ -39,6 +39,13 @@ title() {
     printf "\n\n"
 }
 
+draw_cc() {
+for cc in 90 31 91 32 33 34 35 95 36 97; do
+	echo -en "\r \e[${c}m "$1" \e[0m "
+	sleep 1
+done
+}
+
 breakLine() {
     printf "\n"
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
