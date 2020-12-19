@@ -5,59 +5,70 @@
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
+# ============================================================================= #
+#  ➜ ➜ ➜ TRAP
+# ============================================================================= #
+trap '' SIGINT SIGQUIT SIGTSTP
+
 CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${CDIR}/lib/utils.sh"
+source "${CDIR}/lib/utilities.sh"
 
-title "Installing NVM"
+build_nvm() {
 
-[[ -d "$HOME/.nvm" ]] && sudo rm -r "$HOME/.nvm"
-mkdir -p ~/.nvm
+    title "Installing NVM"
 
-notify "Cloning NVM" && echo
-NVM_DIR="$HOME/.nvm"
+    [[ -d "$HOME/.nvm" ]] && sudo rm -r "$HOME/.nvm"
+    _miss_dir "$HOME/.nvm"
 
-git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
-cd "$NVM_DIR"
-git checkout v${versionNvm}
-. "$NVM_DIR/nvm.sh"
-cd - >/dev/null 2>&1
+    notify "Cloning NVM" && echo
+    NVM_DIR="$HOME/.nvm"
 
-notify "Setting current owner as owner of ~/.nvm";
-chown ${USER:=$(/usr/bin/id -run)}:$USER -R ~/.nvm;
+    git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+    cd "$NVM_DIR"
+    git checkout v${versionNvm}
+    . "$NVM_DIR/nvm.sh"
+    cd - >/dev/null 2>&1
 
-_source_bashrc
+    notify "Setting current owner as owner of ~/.nvm"
+    chown ${USER:=$(/usr/bin/id -run)}:$USER -R ~/.nvm
 
-notify "Setting up NVM" && echo
-nvm install v${versionNode}
-nvm use v${versionNode}
-nvm alias default v${versionNode}
+    _reload_bashrc
 
-notify "Installing Npm" && echo
-nvm install-latest-npm
+    notify "Setting up NVM" && echo
+    nvm install v${versionNode}
+    nvm use v${versionNode}
+    nvm alias default v${versionNode}
 
-notify "Installing Npm tools" && echo
-npm install -g typescript
-npm install -g markdown-it
-npm install -g npm
-npm install -g tldr
-npm install -g nb.sh
+    notify "Installing Npm" && echo
+    nvm install-latest-npm
 
-notify "Setting python binding" && echo
-npm config set python $(which python)
+    notify "Installing Npm tools" && echo
+    npm install -g typescript
+    npm install -g markdown-it
+    npm install -g npm
+    npm install -g tldr
+    npm install -g nb.sh
 
-sudo "$(which nb)" completions install
+    notify "Setting python binding" && echo
+    npm config set python $(which python)
 
-notify "Installing Yarn" && echo
-npm install -g gulp yarn --unsafe-perm
+    sudo "$(which nb)" completions install
 
-notify "Installing Yarn tools" && echo
-yarn global add heroku
-yarn global add jshint
-yarn global add prettier
-yarn global add typescript-language-server
-yarn global add bash-language-server
-yarn global add webpack
+    notify "Installing Yarn" && echo
+    npm install -g gulp yarn --unsafe-perm
 
-_source_bashrc
+    notify "Installing Yarn tools" && echo
+    yarn global add heroku
+    yarn global add jshint
+    yarn global add prettier
+    yarn global add typescript-language-server
+    yarn global add bash-language-server
+    yarn global add webpack
 
-breakLine
+    _reload_bashrc
+
+    breakLine
+}
+while true; do
+    build_nvm
+done

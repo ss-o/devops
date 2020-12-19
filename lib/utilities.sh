@@ -20,6 +20,7 @@ source "${curr_dir}/os.sh"
 #  ➜ ➜ ➜ FUNCTIONS & UTILITIES
 # ============================================================================= #
 _cmd_() { command -v "$1" >/dev/null 2>&1; }
+_apt_() { dpkg -s "$1" >/dev/null 2>&1; }
 _exec_() { type -fP "$1" >/dev/null 2>&1; }
 _miss_dir() { [[ ! -d "$1" ]] && mkdir -p "$1"; }
 _execroot() { [[ "$(whoami)" != "root" ]] && exec sudo -- "$0" "$@"; }
