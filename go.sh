@@ -39,7 +39,7 @@ build_go() {
 
     _reload_bashrc
 
-    notify "Installing Go tools"
+    notify "Setting up Go"
     echo
     go get github.com/davecheney/httpstat
     go get github.com/joho/godotenv
