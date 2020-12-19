@@ -14,9 +14,10 @@ CDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${CDIR}/lib/utilities.sh"
 
 build_pyenv() {
-
+    set +e
+    [[ -d "$HOME/.pyenv" ]] && sudo rm -r "$HOME/.pyenv"
     _miss_dir "${HOME}/.local"
-    _miss_dir "${HOME}/.pyenv"
+    _reload_bashrc
 
     if _cmd_ apt; then
         list="build-essential libssl-dev zlib1g-dev libbz2-dev libxml2-dev \
@@ -37,6 +38,7 @@ build_pyenv() {
         sudo yum install @development zlib-devel bzip2 bzip2-devel readline-devel sqlite \
             sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
     fi
+    set -e
 
     title "Installing Pyenv"
 
