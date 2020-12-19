@@ -69,7 +69,7 @@ build_pyenv() {
     pip install jupyter
     pip install litecli
     pip install matplotlib
-    pip install pandas
+    #    pip install pandas
     pip install pipenv
     pip install poetry
     pip install progressbar2

@@ -80,7 +80,7 @@ notify() {
 }
 
 ### Download show progress bar only
-wgetShowProgress() {
+wgetBar() {
     wget "${1}" --quiet --show-progress
 }
 
@@ -124,9 +124,7 @@ apt-get-update-if-needed() {
 }
 
 install-deps-apt() {
-
     apt-get-update-if-needed
-
     sudo apt-get install -y apt-utils aptitude \
         profile-sync-daemon git build-essential \
         gvfs-bin cmake make gcc g++ openssh-client gnupg2 \
