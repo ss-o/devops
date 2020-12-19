@@ -17,10 +17,8 @@ rbenv_build() {
 
     if _cmd_ apt; then
         apt-get-update-if-needed
-        list="cmake make curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev"
-        if ! _exec_ in $list; then
-            sudo apt-get install -y ${list}
-        fi
+        list="cmake make curl zlib1g-dev build-essential pkg-config libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev"
+        _apt_ "$list"
     fi
     if _cmd_ rbenv; then
         notify "rbenv already install installed, want to reinstall?" && echo
@@ -46,7 +44,7 @@ rbenv_build() {
     _reload_bashrc || echo "Failed reload bash"
 
     notify "Installing Ruby ${versionRuby}" && echo
-    rbenv install ${versionRuby} #Installing required version of Ruby
+    rbenv install -v ${versionRuby} #Installing required version of Ruby
     rbenv global ${versionRuby}
     rbenv rehash
 

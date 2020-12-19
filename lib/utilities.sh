@@ -20,7 +20,11 @@ source "${curr_dir}/os.sh"
 #  ➜ ➜ ➜ FUNCTIONS & UTILITIES
 # ============================================================================= #
 _cmd_() { command -v "$1" >/dev/null 2>&1; }
-_apt_() { dpkg -s "$1" >/dev/null 2>&1; }
+_apt_() {
+    if [ echo "$(dpkg -s "$1" | grep Status:)" != "Status: install ok installed" ]; then
+        sudo apt-get install -y "$1"
+    fi
+}
 _exec_() { type -fP "$1" >/dev/null 2>&1; }
 _miss_dir() { [[ ! -d "$1" ]] && mkdir -p "$1"; }
 _execroot() { [[ "$(whoami)" != "root" ]] && exec sudo -- "$0" "$@"; }
