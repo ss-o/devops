@@ -54,6 +54,36 @@ build_pyenv() {
 
     _reload_bashrc
 
+    if ! type -P python &>/dev/null; then
+        set +e
+        python2="$(type -P python2 2>/dev/null)"
+        python3="$(type -P python3 2>/dev/null)"
+        set -e
+        if [ -n "$python3" ]; then
+            printSubhead "Python uses $python3"
+        elif [ -n "$python2" ]; then
+            printSubhead "Python uses $python2"
+        fi
+    fi
+
+    if ! type -P pip; then
+        set +e
+        pip2="$(type -P pip2 2>/dev/null)"
+        pip3="$(type -P pip3 2>/dev/null)"
+        set -e
+        if [ -f /usr/local/bin/pip ]; then
+            echo "/usr/local/bin/pip already exists, not symlinking - check your \$PATH includes /usr/local/bin (\$PATH = $PATH)"
+        elif [ -f $HOME/.local/bin/pip ]; then
+            echo "~/.local/bin/pip already exists, not symlinking - check your \$PATH includes ~/,local/bin (\$PATH = $PATH)"
+        elif [ -n "$pip3" ]; then
+            $sudo ln -sv "$pip3" /usr/local/bin/pip
+        elif [ -n "$pip2" ]; then
+            $sudo ln -sv "$pip2" /usr/local/bin/pip
+        else
+            $sudo easy_install pip || :
+        fi
+    fi
+
     notify "Installing Tools using PIP" && echo
     python="${PYTHON:-python}"
     python="$(type -P "$python")"

@@ -22,8 +22,8 @@ else
 fi
 
 do_curr_arch() {
-    do_arch="$(uname -m)"
 
+    do_arch="$(uname -m)"
     case "$do_arch" in
     *)
         echo "Unknown"

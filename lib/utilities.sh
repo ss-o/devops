@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#TODO:
+# Cleanup dotfiles.
+# Create welcome script on login
+
 # ============================================================================= #
 #  ➜ ➜ ➜ SS-O UTILITIES
 # ============================================================================= #
@@ -73,23 +77,19 @@ draw_cc() {
         sleep 1
     done
 }
-
 notify() {
     printf "\n"
     printf "${On_IRed} %s ${NC}\n" "$1"
 }
-
 ### Download show progress bar only
 wgetBar() {
     wget "${1}" --quiet --show-progress
 }
-
 ### Download with curl
 curlToFile() {
     notify "Downloading: $1 ----> $2"
     sudo curl -fSL "$1" -o "$2"
 }
-
 _confirm() {
     read -r -p "${1:-Continue?} [y/N]" response
     case $response in
