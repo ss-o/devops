@@ -1,24 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # encoding: utf-8
-# -*- coding: utf8 -*-
-"""
-Created by PyCharm.
-File:               LinuxBashShellScriptForOps:compat_learn_from_request.py
-User:               Guodong
-Create Date:        2017/9/15
-Create Time:        11:07
-Description:        
-References:         https://github.com/requests/requests/blob/master/requests/compat.py
-Prerequisites:      []
- """
 # -*- coding: utf-8 -*-
-
-"""
-requests.compat
-~~~~~~~~~~~~~~~
-This module handles import compatibility issues between Python 2 and
-Python 3.
-"""
 
 import sys
 

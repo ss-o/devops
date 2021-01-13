@@ -1,29 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created by PyCharm.
-File Name:              LinuxBashShellScriptForOps:password-generator.py
-Version:                0.0.1
-Author:                 dgden
-Author Email:           dgdenterprise@gmail.com
-URL:                    https://github.com/DingGuodong/LinuxBashShellScriptForOps
-Download URL:           https://github.com/DingGuodong/LinuxBashShellScriptForOps/tarball/master
-Create Date:            2019/9/19
-Create Time:            17:34
-Description:            password generator
-Long Description:       
-References:             Django==1.11.24,
-Prerequisites:          []
-Development Status:     3 - Alpha, 5 - Production/Stable
-Environment:            Console
-Intended Audience:      System Administrators, Developers, End Users/Desktop
-License:                Freeware, Freely Distributable
-Natural Language:       English, Chinese (Simplified)
-Operating System:       POSIX :: Linux, Microsoft :: Windows
-Programming Language:   Python :: 2.6
-Programming Language:   Python :: 2.7
-Topic:                  Utilities
- """
 
 import hashlib
 import random
@@ -102,7 +78,8 @@ def password_generator(length=7, complexity=3, must_include='.'):
     :return: str: password
     """
     if length < 7:
-        raise InvalidPasswordLength("Invalid password length. Password should be at least 7 digits")
+        raise InvalidPasswordLength(
+            "Invalid password length. Password should be at least 7 digits")
     else:
         length = length - complexity
 
@@ -111,7 +88,8 @@ def password_generator(length=7, complexity=3, must_include='.'):
                                                "length of must_include must less than (length - complexity)")
 
     if complexity == PASSWORD_COMPLEXITY_WITH_SPECIAL:
-        chars = string.letters + string.digits + '!@#$%^&*(-_=+)'  # limited special character
+        chars = string.letters + string.digits + \
+            '!@#$%^&*(-_=+)'  # limited special character
     elif complexity == PASSWORD_COMPLEXITY_WITH_CASE:
         chars = string.letters + string.digits
     elif complexity == PASSWORD_COMPLEXITY_WITHOUT_CASE:
@@ -141,19 +119,26 @@ def password_generator(length=7, complexity=3, must_include='.'):
     num_pos = random.choice(range(len(string.digits)))
     lower_pos = random.choice(range(len(string.lowercase)))
     upper_pos = random.choice(range(len(string.uppercase)))
-    random_pos1, random_pos2, random_pos3 = repeat(random.choice(range(len(middle_result))), 3)
+    random_pos1, random_pos2, random_pos3 = repeat(
+        random.choice(range(len(middle_result))), 3)
 
     if complexity == PASSWORD_COMPLEXITY_WITH_SPECIAL:
-        middle_result_list[random_pos1] = middle_result_list[random_pos1] + string.digits[num_pos]
-        middle_result_list[random_pos2] = middle_result_list[random_pos2] + string.lowercase[lower_pos]
-        middle_result_list[random_pos3] = middle_result_list[random_pos3] + string.uppercase[upper_pos]
+        middle_result_list[random_pos1] = middle_result_list[random_pos1] + \
+            string.digits[num_pos]
+        middle_result_list[random_pos2] = middle_result_list[random_pos2] + \
+            string.lowercase[lower_pos]
+        middle_result_list[random_pos3] = middle_result_list[random_pos3] + \
+            string.uppercase[upper_pos]
 
     elif complexity == PASSWORD_COMPLEXITY_WITH_CASE:
-        middle_result_list[random_pos2] = middle_result_list[random_pos2] + string.lowercase[lower_pos]
-        middle_result_list[random_pos3] = middle_result_list[random_pos3] + string.uppercase[upper_pos]
+        middle_result_list[random_pos2] = middle_result_list[random_pos2] + \
+            string.lowercase[lower_pos]
+        middle_result_list[random_pos3] = middle_result_list[random_pos3] + \
+            string.uppercase[upper_pos]
 
     elif complexity == PASSWORD_COMPLEXITY_WITHOUT_CASE:
-        middle_result_list[random_pos1] = middle_result_list[random_pos1] + string.digits[num_pos]
+        middle_result_list[random_pos1] = middle_result_list[random_pos1] + \
+            string.digits[num_pos]
 
     return ''.join(middle_result_list)
 
@@ -168,7 +153,8 @@ def password_generator_for_human(length=7, complexity=3, must_include='.', human
     :return: str: password
     """
     if length < 7:
-        raise InvalidPasswordLength("Invalid password length. Password should be at least 7 digits")
+        raise InvalidPasswordLength(
+            "Invalid password length. Password should be at least 7 digits")
     else:
         length = length - complexity
 
@@ -177,7 +163,8 @@ def password_generator_for_human(length=7, complexity=3, must_include='.', human
                                                "length of must_include must less than (length - complexity)")
 
     if complexity == PASSWORD_COMPLEXITY_WITH_SPECIAL:
-        chars = string.letters + string.digits + '!@#$%^&*(-_=+)'  # limited special character
+        chars = string.letters + string.digits + \
+            '!@#$%^&*(-_=+)'  # limited special character
     elif complexity == PASSWORD_COMPLEXITY_WITH_CASE:
         chars = string.letters + string.digits
     elif complexity == PASSWORD_COMPLEXITY_WITHOUT_CASE:
@@ -190,7 +177,8 @@ def password_generator_for_human(length=7, complexity=3, must_include='.', human
             "The value of complexity parameter only can be 0, 1, 2 or 3")
 
     if human_readable:
-        illegible_password_characters = ['1', '0', 'i', 'j', 'k', 'l', 'o', 'p', 's', 'I', 'J', 'K', 'L', 'O', 'P', 'S']
+        illegible_password_characters = [
+            '1', '0', 'i', 'j', 'k', 'l', 'o', 'p', 's', 'I', 'J', 'K', 'L', 'O', 'P', 'S']
         chars = "".join(set(list(chars)) - set(illegible_password_characters))
 
     middle_result = get_random_string(length, chars)
@@ -211,19 +199,26 @@ def password_generator_for_human(length=7, complexity=3, must_include='.', human
     num_pos = random.choice(range(len(string.digits)))
     lower_pos = random.choice(range(len(string.lowercase)))
     upper_pos = random.choice(range(len(string.uppercase)))
-    random_pos1, random_pos2, random_pos3 = repeat(random.choice(range(len(middle_result))), 3)
+    random_pos1, random_pos2, random_pos3 = repeat(
+        random.choice(range(len(middle_result))), 3)
 
     if complexity == PASSWORD_COMPLEXITY_WITH_SPECIAL:
-        middle_result_list[random_pos1] = middle_result_list[random_pos1] + string.digits[num_pos]
-        middle_result_list[random_pos2] = middle_result_list[random_pos2] + string.lowercase[lower_pos]
-        middle_result_list[random_pos3] = middle_result_list[random_pos3] + string.uppercase[upper_pos]
+        middle_result_list[random_pos1] = middle_result_list[random_pos1] + \
+            string.digits[num_pos]
+        middle_result_list[random_pos2] = middle_result_list[random_pos2] + \
+            string.lowercase[lower_pos]
+        middle_result_list[random_pos3] = middle_result_list[random_pos3] + \
+            string.uppercase[upper_pos]
 
     elif complexity == PASSWORD_COMPLEXITY_WITH_CASE:
-        middle_result_list[random_pos2] = middle_result_list[random_pos2] + string.lowercase[lower_pos]
-        middle_result_list[random_pos3] = middle_result_list[random_pos3] + string.uppercase[upper_pos]
+        middle_result_list[random_pos2] = middle_result_list[random_pos2] + \
+            string.lowercase[lower_pos]
+        middle_result_list[random_pos3] = middle_result_list[random_pos3] + \
+            string.uppercase[upper_pos]
 
     elif complexity == PASSWORD_COMPLEXITY_WITHOUT_CASE:
-        middle_result_list[random_pos1] = middle_result_list[random_pos1] + string.digits[num_pos]
+        middle_result_list[random_pos1] = middle_result_list[random_pos1] + \
+            string.digits[num_pos]
 
     return ''.join(middle_result_list)
 
@@ -237,4 +232,5 @@ if __name__ == '__main__':
 
     num = 27  # generate 27 passwords
     for _ in range(num):
-        print(password_generator_for_human(length=16, complexity=3, must_include='@'))
+        print(password_generator_for_human(
+            length=16, complexity=3, must_include='@'))

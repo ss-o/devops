@@ -1,13 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # encoding: utf-8
 # -*- coding: utf8 -*-
-"""
-Created by PyCharm.
-File:               LinuxBashShellScriptForOps:progressOps.py
-User:               Guodong
-Create Date:        2016/12/7
-Create Time:        0:13
- """
+
 # https://pypi.python.org/pypi/progress/1.2
 # pip used
 from progress.bar import Bar

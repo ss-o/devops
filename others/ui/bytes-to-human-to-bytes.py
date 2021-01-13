@@ -1,39 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created by PyCharm.
-File Name:              LinuxBashShellScriptForOps:bytes-to-human-to-bytes.py
-Version:                0.0.1
-Author:                 dgden
-Author Email:           dgdenterprise@gmail.com
-URL:                    https://github.com/DingGuodong/LinuxBashShellScriptForOps
-Download URL:           https://github.com/DingGuodong/LinuxBashShellScriptForOps/tarball/master
-Create Date:            2019/7/9
-Create Time:            20:07
-Description:            bytes2human, human2bytes
-Long Description:       BYTES-TO-HUMAN / HUMAN-TO-BYTES CONVERTER (PYTHON RECIPE)
-
-                        format --> format_
-                            PEP 8 - Function and Method Arguments
-                            https://www.python.org/dev/peps/pep-0008/#function-and-method-arguments
-                            If a function argument's name clashes with a reserved keyword,
-                            it is generally better to append a single trailing underscore rather than
-                            use an abbreviation or spelling corruption. Thus class_ is better than clss.
-                            (Perhaps better is to avoid such clashes by using a synonym.)
-References:             http://code.activestate.com/recipes/578019/
-                        https://github.com/ActiveState/code
-                        https://github.com/giampaolo/psutil/blob/master/psutil/_common.py
-Prerequisites:          []
-Development Status:     3 - Alpha, 5 - Production/Stable
-Environment:            Console
-Intended Audience:      System Administrators, Developers, End Users/Desktop
-License:                Freeware, Freely Distributable
-Natural Language:       English, Chinese (Simplified)
-Operating System:       POSIX :: Linux, Microsoft :: Windows
-Programming Language:   Python :: 2.6
-Programming Language:   Python :: 2.7
-Topic:                  Utilities
- """
 
 """
 Bytes-to-human / human-to-bytes converter.
