@@ -8,12 +8,12 @@ updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "npm"
-  - package-ecosystem: "" # See documentation for possible values
+      interval: "daily"
+  - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "pip"
-  - package-ecosystem: "" # See documentation for possible values
+      interval: "daily"
+  - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
